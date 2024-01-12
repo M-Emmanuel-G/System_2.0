@@ -4,16 +4,18 @@ import { FC, useEffect } from 'react';
 interface ModalProps {
   isOpen?: boolean;
   onClose: () => void;
-  path: string
+  path: string;
+  text?:string
 }
 
-const ModalAlert: FC<ModalProps> = ({ isOpen, onClose, path }) => {
+const ModalAlert: FC<ModalProps> = ({ isOpen, onClose, path, text }) => {
 
     const router = useRouter()
 
     useEffect(()=>{
         setTimeout(()=>{
             router.push(path)
+            onClose()
         }, 4000)
     },[])
 
@@ -26,7 +28,7 @@ const ModalAlert: FC<ModalProps> = ({ isOpen, onClose, path }) => {
           onClick={onClose}
         >
         </span>
-        <p className='text-black text-2xl'>Formulário enviado com sucesso...</p>
+        <p className='text-black text-2xl'>{text}</p>
       </div>
     </div>
   );
