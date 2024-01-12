@@ -5,6 +5,7 @@ import Input from "./components/Input"
 import emailjs from 'emailjs-com' 
 import GetDate from "./services/GetDate"
 import { useRouter } from "next/navigation"
+import ModalAlert from "./components/modalAlert"
 
 
 export default function Home() {
@@ -24,7 +25,13 @@ export default function Home() {
   const [sentTo, setSendTo] = useState('')
   const [obs, setObs] = useState('')
 
+  const [isOpen, setIsOpen] = useState(false)
+  
   const router = useRouter()
+
+  const onClose = ()=>{
+    setIsOpen(false)
+  }
 
   const form = (ev:React.FormEvent)=>{
     ev.preventDefault()
@@ -47,12 +54,16 @@ export default function Home() {
       colaborator: collaborator
     }
 
-    emailjs.send('service_25vayr4', 'template_qkpvdzv', body, '5ZxPWFsvg_-WP62gn')
-    .then((result) => {
-          router.push('/Processing')
-    }, (error) => {
-        alert('Ocorreu um erro inesperado, tente novamente mais tarde!')
-    });
+    if(!client || !model || ! user || !password || !qtdCam || !ip || !servicePort || !httpPort || !ddns || !storage || !recDays || !collaborator ){
+      setIsOpen(true)
+    } else{
+      emailjs.send('service_25vayr4', 'template_qkpvdzv', body, '5ZxPWFsvg_-WP62gn')
+      .then((result) => {
+            router.push('/Processing')
+      }, (error) => {
+          alert('Ocorreu um erro inesperado, tente novamente mais tarde!')
+      });
+    }
     
   }
 
@@ -151,6 +162,14 @@ export default function Home() {
           </div>
         </form>
       </section>
+      {
+        isOpen &&
+        <ModalAlert
+          text="Todas as informações precisam ser inseridas!"
+          path="/"
+          onClose={onClose}
+        />
+      }
     </main>
   )
 }
