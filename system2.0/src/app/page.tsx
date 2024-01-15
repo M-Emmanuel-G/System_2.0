@@ -48,7 +48,7 @@ export default function Home() {
       Porta_HTTP: httpPort,
       ddns: ddns,
       Armazenamento: storage,
-      Dias_de_Gravacao: recDays,
+      Dias_de_gravacao: recDays,
       Observacao: obs,
       Email_Cliente: sentTo,
       colaborator: collaborator
