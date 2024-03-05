@@ -68,7 +68,7 @@ export default function SendOS() {
   }
 
   return (
-    <main className="w-screen h-screen  flex min-h-screen flex-col items-center justify-between ">
+    <main className="w-screen h-screen  flex min-h-screen flex-col items-center justify-between bg-black text-white">
       <section className="w-96 h-full flex  items-center flex-col  overflow-y-auto">
         <h2 className="text-2xl my-8">Formulario de Preventivas</h2>
         <form onSubmit={form}>
