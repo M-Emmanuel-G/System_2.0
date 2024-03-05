@@ -14,7 +14,7 @@ const ModalAlert: FC<ModalProps> = ({ isOpen, onClose, path, text }) => {
 
     useEffect(()=>{
         setTimeout(()=>{
-            router.push(path)
+            // router.push(path)
             onClose()
         }, 4000)
     },[])
