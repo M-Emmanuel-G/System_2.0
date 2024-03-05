@@ -9,7 +9,6 @@ const Header = ()=>{
                 <Image src={IconLogo} alt="" className="w-1/2 h-full"/>
             </section>
             <section className="w-4/6 h-full bg-white flex justify-start items-center">
-                <Link href="/">Inicio</Link>
             </section>
         </header>
     )

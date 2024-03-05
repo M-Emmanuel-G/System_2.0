@@ -15,7 +15,7 @@ export default function Home() {
  return (
     <main className="w-screen h-screen  flex min-h-screen flex-col items-center justify-between bg-black">
       <Header/>
-      <section className="w-full h-[90%] flex justify-center" >
+      <section className="w-full h-[90%] flex justify-center items-center" >
         <CardService
           service="Enviar OS"
         />
