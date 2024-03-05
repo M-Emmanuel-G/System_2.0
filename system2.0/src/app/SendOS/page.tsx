@@ -1,14 +1,14 @@
 'use client'
 
 import React, { useState } from "react"
-import Input from "./components/Input"
 import emailjs from 'emailjs-com' 
-import GetDate from "./services/GetDate"
 import { useRouter } from "next/navigation"
-import ModalAlert from "./components/modalAlert"
+import GetDate from "../services/GetDate"
+import Input from "../components/Input"
+import ModalAlert from "../components/modalAlert"
 
 
-export default function Home() {
+export default function SendOS() {
 
   const [client, setClient] = useState('')
   const [model, setModel] = useState('')
