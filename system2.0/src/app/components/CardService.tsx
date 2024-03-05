@@ -7,15 +7,11 @@ interface CardProps{
 
 const CardService = ({service}:CardProps)=> {
  return (
-    <Card>
-    <CardHeader>
-      <CardTitle>Card Title</CardTitle>
-      <CardDescription>Card Description</CardDescription>
-    </CardHeader>
-    <CardContent>
-      <Link href="SendOS">{service}</Link>
-    </CardContent>
-  </Card>
+    <Card className="w-[300px] h-[50px] flex justify-center items-center m-4">
+      <CardContent className=" w-full h-full flex justify-center items-center m-0 p-0">
+        <Link className="w-full h-full flex items-center justify-center" href="SendOS">{service}</Link>
+      </CardContent>
+    </Card>
   
  );
 }

@@ -7,15 +7,19 @@ import GetDate from "./services/GetDate"
 import { useRouter } from "next/navigation"
 import ModalAlert from "./components/modalAlert"
 import CardService from "./components/CardService"
+import Header from "./components/Header"
 
 
 export default function Home() {
 
  return (
     <main className="w-screen h-screen  flex min-h-screen flex-col items-center justify-between bg-black">
-      <CardService
-        service="Enviar OS"
-      />
+      <Header/>
+      <section className="w-full h-[90%] flex justify-center" >
+        <CardService
+          service="Enviar OS"
+        />
+      </section>
     </main>
   )
 }
