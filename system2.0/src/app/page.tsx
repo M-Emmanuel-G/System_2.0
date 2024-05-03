@@ -17,7 +17,12 @@ export default function Home() {
       <Header/>
       <section className="w-full h-[90%] flex justify-center items-center" >
         <CardService
+          path="/SendOS"
           service="Enviar OS"
+        />
+        <CardService
+          service="Armazenar Fotos"
+          path="/"
         />
       </section>
     </main>
