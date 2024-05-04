@@ -60,11 +60,13 @@ export default function SendOS() {
     if(!client || !model || ! user || !password || !qtdCam || !ip || !servicePort || !httpPort || !ddns || !storage || !recDays || !collaborator ){
       setIsOpen(true)
     } else{
-      emailjs.send('service_25vayr4', 'template_qkpvdzv', body, '5ZxPWFsvg_-WP62gn')
+      emailjs.send('service_ve702oh', 'template_qkpvdzv', body, '5ZxPWFsvg_-WP62gn')
       .then((result) => {
             router.push('/Processing')
+            console.log(result);
+            
       }, (error) => {
-          alert('Ocorreu um erro inesperado, tente novamente mais tarde!')
+          console.log(error)
       });
     }
     
@@ -164,7 +166,7 @@ export default function SendOS() {
                onChange={(ev)=>{setSendTo(ev.target.value)}}
                className="w-[326px] h-[30px] text-center text-gray-400 rounded-3xl my-2 bg-white"
             >
-              <option>Enviar para...</option>
+              <option>emmanuel-jnr@hotmail.com</option>
               <option>mauricio@ctts.com.br</option>
               <option>gabrielsantos2024re4@gmail.com</option>
             </select>
