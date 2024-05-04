@@ -1,39 +1,42 @@
-"use client"
-import { useState } from "react";
+
+import { db } from "@/lib/prisma";
 import Header from "../components/Header";
-import { UploadButton } from "../components/UploadThings";
+import UpButton from "../components/UploadButton";
+import { Images } from "@prisma/client";
+import Image from "next/image";
 
-interface ImagesProps{
-    images:string
-}
 
-export default function UploadImg() {
+export default async function UploadImg() {
 
-    const [imgs, setImgs] = useState<ImagesProps>()
+    const getImages = await db.images.findMany()
 
+    const showImages = getImages.map((image:Images)=>{
+        return(
+            <div className="w-[370px] h-350px my-4" >
+                <Image 
+                    sizes="100vw" 
+                    quality={100} 
+                    src={image.imageUrl} 
+                    alt="" 
+                    width={0} 
+                    height={0} 
+                    className="w-[368px] h-[300px]"
+                />
+                <span>{image.nameArchive}</span>
+            </div>
+        )
+    })
+    
 
     return (
         <main className="w-screen h-screen min-h-screen flex flex-col items-center justify-between bg-black text-white">
             <Header/>
             <section className="w-full h-[90%] flex flex-col items-center">
             <section className="w-full h-1/6">
-                <UploadButton
-                    endpoint="imageUploader"
-                    onClientUploadComplete={(res) => {
-                        setImgs({
-                            images:res[0].url
-                        },)
-                    console.log(res)    
-                    alert("Upload Completed");
-                    }}
-                    onUploadError={(error: Error) => {
-                    // Do something with the error.
-                    alert(`ERROR! ${error.message}`);
-                    }}
-                />
+                <UpButton/>
             </section>
-            <section className="w-full h-5/6 bg-red-400">
-                
+            <section className="w-full h-5/6 flex flex-col items-center overflow-y-auto">
+                {showImages}
             </section>
             </section>
         </main>
