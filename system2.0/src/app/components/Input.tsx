@@ -9,7 +9,7 @@ interface InputProps{
 const Input: FC<InputProps> = ({placeholder, value, onChange})=> {
  return (
   <input
-    className="my-2 w-80 h-8 text-center outline-none rounded-xl text-black"
+    className="my-2 w-80 h-12 text-center outline-none rounded-xl text-black"
     placeholder= {placeholder}
     value={value}
     onChange={onChange}

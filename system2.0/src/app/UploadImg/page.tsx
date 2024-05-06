@@ -10,9 +10,9 @@ export default async function UploadImg() {
 
     const getImages = await db.images.findMany()
 
-    const showImages = getImages.map((image:Images)=>{
+    const showImages = getImages.map((image:Images, key:number)=>{
         return(
-            <div className="w-[370px] h-350px my-4" >
+            <div key={image.id} className="w-[370px] h-350px my-4" >
                 <Image 
                     sizes="100vw" 
                     quality={100} 
@@ -30,7 +30,6 @@ export default async function UploadImg() {
 
     return (
         <main className="w-screen h-screen min-h-screen flex flex-col items-center justify-between bg-black text-white">
-            <Header/>
             <section className="w-full h-[90%] flex flex-col items-center">
             <section className="w-full h-1/6">
                 <UpButton/>

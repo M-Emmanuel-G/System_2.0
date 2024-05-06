@@ -6,8 +6,6 @@ import { useRouter } from "next/navigation"
 import GetDate from "../services/GetDate"
 import Input from "../components/Input"
 import ModalAlert from "../components/modalAlert"
-import Header from "../components/Header"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@radix-ui/react-select"
 import Link from "next/link"
 
 
@@ -74,7 +72,6 @@ export default function SendOS() {
 
   return (
     <main className="w-screen h-screen min-h-screen flex flex-col items-center justify-between bg-black text-white">
-      <Header/>
       <section className="w-96 h-[90%] flex  items-center flex-col  overflow-y-auto">
         <h2 className="text-2xl my-8">Formulario de Preventivas</h2>
         <form onSubmit={form}>
@@ -155,7 +152,7 @@ export default function SendOS() {
             <select 
               value={collaborator}
               onChange={(ev)=>{setCollaborattor(ev.target.value)}}
-              className="w-[326px] h-[30px] text-center text-gray-400 rounded-3xl my-2 bg-white"
+              className="w-[326px] h-[50px] text-center text-gray-400 rounded-3xl my-2 bg-white"
             >
               <option>Colaborador</option>
               <option>Márcio</option>
@@ -164,7 +161,7 @@ export default function SendOS() {
             <select 
                value={sentTo}
                onChange={(ev)=>{setSendTo(ev.target.value)}}
-               className="w-[326px] h-[30px] text-center text-gray-400 rounded-3xl my-2 bg-white"
+               className="w-[326px] h-[50px] text-center text-gray-400 rounded-3xl my-2 bg-white"
             >
               <option>emmanuel-jnr@hotmail.com</option>
               <option>mauricio@ctts.com.br</option>
@@ -173,10 +170,10 @@ export default function SendOS() {
             
           </div>
           <div className=" w-full flex items-center flex-col">
-            <button className="w-80 h-8 bg-lime-400 rounded-xl my-2 mb-4">Enviar</button>
-            <Link
-              href="/"
-              className="w-80 h-8 flex items-center justify-center bg-lime-400 rounded-xl p-0 m-0"
+            <button className="w-80 h-12 bg-lime-400 rounded-xl my-2 mb-4">Enviar</button>
+              <Link
+                href="/"
+                className="w-80 h-12 flex items-center justify-center bg-lime-400 rounded-xl p-0 m-0"
               >Voltar</Link>
           </div>
         </form>
