@@ -1,7 +1,7 @@
 import { ChangeEvent, ChangeEventHandler, FC } from "react";
 
 interface InputProps{
-    placeholder:string
+    placeholder?:string
     value:string
     onChange :ChangeEventHandler<HTMLInputElement>
 }

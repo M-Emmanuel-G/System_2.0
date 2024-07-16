@@ -7,7 +7,7 @@ export default function VDL() {
             <Header/>
             <section className="w-full h-[90%] flex flex-col items-center justify-center overflow-y-auto">
                 <Link 
-                    href="/"
+                    href="/VDL/Sinterizacao"
                     className=" w-96 h-[50px] bg-sky-200 rounded-xl flex justify-center items-center my-2"
                 >
                     <strong>Sinterização</strong>
