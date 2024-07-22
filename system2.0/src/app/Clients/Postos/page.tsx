@@ -19,7 +19,7 @@ export default function GasStation() {
                     <strong>Posto Ipiranga</strong>
                 </Link>
                 <Link 
-                    href="/Clients/Postos/PostoIpiranga"
+                    href="/Clients/Postos/PostoTotal"
                     className=" w-96 h-[50px] bg-sky-200 rounded-xl flex justify-center items-center my-2"
                 >
                     <strong>Posto Total</strong>

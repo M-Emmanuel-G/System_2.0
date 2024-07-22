@@ -24,10 +24,10 @@ function createPdf() {
 
 
 
-   Segue abaixo o envio da O.S, referente a manutenção preventiva do Posto Ipiranga Pista!
+   Segue abaixo o envio da O.S, referente a manutenção preventiva do Posto Total DVR01!
 
     Data de envio:  ${dayjs().format("DD-MM-YYYY")}
-    Nome do Cliente: Posto Ipiranga Pista 
+    Nome do Cliente: Posto Total DVR01
     Modelo/Marca do gravador: MHDX 3108
     Usuario: admin  
     Senha: ctts0745
@@ -79,7 +79,7 @@ CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
 
   // Adiciona título
   doc.setFontSize(22);
-  doc.text('Preventiva Posto Shell Pista', 20, 20);
+  doc.text('Preventiva Posto Total Pista', 20, 20);
 
   // Adiciona subtítulo
   doc.setFontSize(16);
@@ -104,7 +104,7 @@ CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
   doc.text('Página 2', 20, 20);
 
   // Salva o PDF com o nome especificado
-  doc.save('relatorio-vendas.pdf');
+  doc.save('Preventiva-Total-Pista.pdf');
 }
 
 // Chama a função para criar o PDF
@@ -123,19 +123,19 @@ const GeneratePDF = ()=>{
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Modelo DVR:</strong>
-                    <span className="mr-4">MHDX 3108</span>
+                    {/* <span className="mr-4">MHDX 3108</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Usuario:</strong>
-                    <span className="mr-4">admin</span>
+                    {/* <span className="mr-4">admin</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Senha:</strong>
-                    <span className="mr-4">ctts0745</span>
+                    {/* <span className="mr-4">ctts0745</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Cameras instaladas:</strong>
-                    <span className="mr-4">7</span>
+                    {/* <span className="mr-4">7</span> */}
                 </div>
                 
                 <div className="my-4">
@@ -144,27 +144,27 @@ const GeneratePDF = ()=>{
                 
                 <div className="py-2 flex justify-between">
                     <strong>IP:</strong>
-                    <span className="mr-4">192.168.0.49</span>
+                    {/* <span className="mr-4">192.168.0.49</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Porta de servico</strong>
-                    <span className="mr-4">37777</span>
+                    {/* <span className="mr-4">37777</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Porta HTTP</strong>
-                    <span className="mr-4">80</span>
+                    {/* <span className="mr-4">80</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Acesso remoto:</strong>
-                    <span className="mr-4">Sim</span>
+                    {/* <span className="mr-4">Sim</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>DDNS:</strong>
-                    <span className="mr-4">Não se aplica</span>
+                    {/* <span className="mr-4">Não se aplica</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Cloud/NS:</strong>
-                    <span className="mr-4">WJCH004667P</span>
+                    {/* <span className="mr-4">WJCH004667P</span> */}
                 </div>
 
                 <div className="my-4">
@@ -173,11 +173,11 @@ const GeneratePDF = ()=>{
 
                 <div className="py-2 flex justify-between">
                     <strong>Tamanho HD: </strong>
-                    <span className="mr-4"> 2TB</span>
+                    {/* <span className="mr-4"> 2TB</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Dias de armazenamento: </strong>
-                    <span className="mr-4">18 dias</span>
+                    {/* <span className="mr-4">18 dias</span> */}
                 </div>
                 <div className="py-2 flex justify-center">
                     <Button className="my-8 w-52 bg-amber-400 text-black text-xl" onClick={GeneratePDF}>Gerar PDF</Button>
