@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "../components/Header";
+import Header from "../../components/Header";
 
 export default function VDL() {
     return (
@@ -7,7 +7,7 @@ export default function VDL() {
             <Header/>
             <section className="w-full h-[90%] flex flex-col items-center justify-center overflow-y-auto">
                 <Link 
-                    href="/VDL/Sinterizacao"
+                    href="/Clients/VDL/Sinterizacao"
                     className=" w-96 h-[50px] bg-sky-200 rounded-xl flex justify-center items-center my-2"
                 >
                     <strong>Sinterização</strong>

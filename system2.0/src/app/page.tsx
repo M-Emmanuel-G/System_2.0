@@ -21,6 +21,10 @@ export default function Home() {
           path="/SendOS"
           service="Enviar OS"
         />
+        <CardService
+          path="/Clients"
+          service="Clientes"
+        />
       </section>
     </main>
   )
