@@ -10,7 +10,7 @@ const Header = ()=>{
     const router = useRouter()
 
     return (
-        <header className="w-full h-[10%] flex bg-sky-400 items-center justify-center text-black">
+        <header className="w-full h-[10%] flex bg-amber-400 items-center justify-center text-black">
             <div className="w-1/6 h-full flex justify-center items-center">
                 <ChevronLeftCircle
                     className=" w-10 h-10"

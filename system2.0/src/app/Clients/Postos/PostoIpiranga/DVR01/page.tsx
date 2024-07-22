@@ -9,7 +9,7 @@ import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
 
 
-export default function DVR02() {
+export default function DVR01() {
 
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
@@ -24,20 +24,20 @@ function createPdf() {
 
 
 
-   Segue abaixo o envio da O.S., referente a manutenção preventiva, de Posto Shell!
+   Segue abaixo o envio da O.S., referente a manutenção preventiva, de Posto Ipiranga Pista!
 
-    Data de envio:  {{data}}
+    Data de envio:  ${dayjs().format("DD-MM-YYYY")}
     Nome do Cliente: Posto Shel ADM
-    Modelo/Marca do gravador: MHDX 3008-c
+    Modelo/Marca do gravador: MHDX 3108
     Usuario: admin  
     Senha: ctts0745
-    Total de cameras instaladas: 9 cameras
-    Cloud/NS: XO6M1700094H4
-    IP: 192.168.35.54
+    Total de cameras instaladas: 7 cameras
+    Cloud/NS: WJCH004667P
+    IP: 192.168.0.49
     Porta de Serviço: 37777
-    Porta  HTTP: 80 
+    Porta  HTTP: 8087
     Tamanho do HD/Armazenamento: 2 Terabytes
-    Tempo de Gravação: 20 dias
+    Tempo de Gravação: 18 dias
 
                     Preventivas realizadas:
 
@@ -79,7 +79,7 @@ CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
 
   // Adiciona título
   doc.setFontSize(22);
-  doc.text('Preventiva Posto Shell Troca de Óleo', 20, 20);
+  doc.text('Preventiva Posto Shell Administrativo', 20, 20);
 
   // Adiciona subtítulo
   doc.setFontSize(16);
@@ -119,11 +119,11 @@ const GeneratePDF = ()=>{
         <section className="w-full h-[90%] flex flex-col items-center">
             <section className="w-96 h-full overflow-y-auto justify-center items-center">
                 <div className="py-2">
-                    <h2 className="text-2xl my-4 text-amber-300">Posto Shell Escritório</h2>
+                    <h2 className="text-2xl my-4 text-amber-300">Posto Ipiranga Pista</h2>
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Modelo DVR:</strong>
-                    <span className="mr-4">MHDX 3008-c</span>
+                    <span className="mr-4">MHDX 3108</span>
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Usuario:</strong>
@@ -135,7 +135,7 @@ const GeneratePDF = ()=>{
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Cameras instaladas:</strong>
-                    <span className="mr-4">9</span>
+                    <span className="mr-4">7</span>
                 </div>
                 
                 <div className="my-4">
@@ -144,7 +144,7 @@ const GeneratePDF = ()=>{
                 
                 <div className="py-2 flex justify-between">
                     <strong>IP:</strong>
-                    <span className="mr-4">192.168.35.54</span>
+                    <span className="mr-4">192.168.0.49</span>
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Porta de servico</strong>
@@ -164,7 +164,7 @@ const GeneratePDF = ()=>{
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Cloud/NS:</strong>
-                    <span className="mr-4">XO6M1700094H4</span>
+                    <span className="mr-4">WJCH004667P</span>
                 </div>
 
                 <div className="my-4">
@@ -177,7 +177,7 @@ const GeneratePDF = ()=>{
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Dias de armazenamento: </strong>
-                    <span className="mr-4">30 Dias</span>
+                    <span className="mr-4">18 dias</span>
                 </div>
                 <div className="py-2 flex justify-center">
                     <Button className="my-8 w-52 bg-amber-400 text-black text-xl" onClick={GeneratePDF}>Gerar PDF</Button>
