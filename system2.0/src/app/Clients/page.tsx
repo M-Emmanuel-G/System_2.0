@@ -13,7 +13,7 @@ export default function Clients() {
                     service="VDL"
                 />
                 <CardService
-                    path="/Clients/Jequiri"
+                    path="/Clients/Jequeri"
                     service="Jequiri"
                 />
                 <CardService
