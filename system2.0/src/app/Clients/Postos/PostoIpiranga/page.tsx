@@ -8,15 +8,15 @@ export default function PostoIpiranga() {
         <section className="w-full h-[90%] flex flex-col items-center justify-center overflow-y-auto">
         <Link 
             href="/Clients/Postos/PostoIpiranga/DVR01"
-            className=" w-96 h-20 bg-sky-200 rounded-xl my-2 flex justify-center items-center"
+            className=" w-96 h-20 bg-amber-400 rounded-xl my-2 flex justify-center items-center"
         >
             <strong>DVR Pista</strong>
         </Link>
         <Link 
             href="/Clients/Postos/PostoIpiranga/DVR02"
-            className=" w-96 h-20 bg-sky-200 rounded-xl my-2 flex justify-center items-center"
+            className=" w-96 h-20 bg-amber-400 rounded-xl my-2 flex justify-center items-center"
         >
-            <strong>DVR Escritório</strong>
+            <strong>DVR Escritorio</strong>
         </Link>
         </section>
    </main>

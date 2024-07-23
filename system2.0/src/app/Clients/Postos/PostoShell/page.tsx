@@ -8,13 +8,13 @@ export default function PostoShell() {
         <section className="w-full h-[90%] flex flex-col items-center justify-center overflow-y-auto">
         <Link 
             href="/Clients/Postos/PostoShell/DVR01"
-            className=" w-96 h-20 bg-sky-200 rounded-xl my-2 flex justify-center items-center"
+            className=" w-96 h-20 bg-amber-400 rounded-xl my-2 flex justify-center items-center"
         >
             <strong>DVR Escritorio</strong>
         </Link>
         <Link 
             href="/Clients/Postos/PostoShell/DVR02"
-            className=" w-96 h-20 bg-sky-200 rounded-xl my-2 flex justify-center items-center"
+            className=" w-96 h-20 bg-amber-400 rounded-xl my-2 flex justify-center items-center"
         >
             <strong>DVR Troca de Óleo</strong>
         </Link>
