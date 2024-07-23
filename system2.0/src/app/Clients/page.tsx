@@ -25,7 +25,7 @@ export default function Clients() {
                     service="Escola Jayme Martins"
                 />
                 <CardService
-                    path="/"
+                    path="/Clients/LaticiniosIta"
                     service="Laticinios-Ita"
                 />
             </section>
