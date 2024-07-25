@@ -7,9 +7,10 @@ import jsPDF from 'jspdf';
 import ImgCTTS from '../../../../assets/ctts-icon.png'
 import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
+import { LogoBase64 } from "@/app/assets/ImageBase64";
 
 
-export default function AutoForno() {
+export default function SaoJose() {
 
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
@@ -24,10 +25,10 @@ function createPdf() {
 
 
 
-   Segue abaixo o envio da O.S, referente a manutenção preventiva do VDL Auto Forno!
+   
 
     Data de envio:  ${dayjs().format("DD-MM-YYYY")}
-    Nome do Cliente: VDL Auto Forno
+    Nome do Cliente: Jequeri São José
     Modelo/Marca do gravador: mhdx-3116
     Usuario: admin  
     Senha: 
@@ -77,34 +78,40 @@ CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
 
   const doc = new jsPDF();
 
+  const imgData = LogoBase64
+  doc.addImage(imgData, 'PNG', 70, 0, 80, 30);
+
+  // 1-position x
+  // 2-position y
+  // 3-size width
+  // 5-size heigth
+
   // Adiciona título
-  doc.setFontSize(22);
-  doc.text('Preventiva-VDL-Auto-Forno', 20, 20);
+  doc.setFontSize(16);
+  doc.text(`Preventiva Jequeri São José                                        ${dayjs().format("DD-MM-YYYY")}  `, 20, 40);
 
   // Adiciona subtítulo
-  doc.setFontSize(16);
-  doc.text(dayjs().format("DD-MM-YYYY"), 20, 30);
+//   doc.setFontSize(16);
+//   doc.text(dayjs().format("DD-MM-YYYY"), 40, 50);
 
   // Adiciona um parágrafo
   doc.setFontSize(12);
   doc.text(
     getInfos,
-    20, 40, { maxWidth: 170 }
+    15, 10, { maxWidth: 170 }
   );
 
-  // Adiciona uma linha
-  doc.line(20, 70, 190, 70);
+  doc.text("Segue abaixo o envio da O.S, referente a manutenção preventiva do Jequeri São José!", 10,20)
 
-  // Adiciona uma imagem (assumindo que você tenha uma imagem chamada 'logo.png' no diretório atual)
-//   const imgData = convertImageToBase64("../../../../assets/ctts-icon.png") // Substitua '...' pelo conteúdo base64 da imagem
-//   doc.addImage(imgData, 'PNG', 20, 80, 50, 50);
+  // Adiciona uma linha
+//   doc.line(20, 70, 190, 70);
 
   // Adiciona uma nova página e texto nela
-  doc.addPage();
-  doc.text('Página 2', 20, 20);
+//   doc.addPage();
+//   doc.text('Página 2', 20, 20);
 
   // Salva o PDF com o nome especificado
-  doc.save('VDL-Auto-Forno.pdf');
+  doc.save('Jequeri-Sao-Jose.pdf');
 }
 
 // Chama a função para criar o PDF
@@ -119,7 +126,7 @@ const GeneratePDF = ()=>{
         <section className="w-full h-[90%] flex flex-col items-center">
             <section className="w-96 h-full overflow-y-auto justify-center items-center">
                 <div className="py-2">
-                    <h2 className="text-2xl my-4 text-amber-300">VDL Auto Forno</h2>
+                    <h2 className="text-2xl my-4 text-amber-300">Jequeri São José</h2>
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Modelo DVR:</strong>

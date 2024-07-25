@@ -9,7 +9,7 @@ import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
 
 
-export default function AutoForno() {
+export default function OuroPreto() {
 
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
@@ -24,10 +24,10 @@ function createPdf() {
 
 
 
-   Segue abaixo o envio da O.S, referente a manutenção preventiva do VDL Auto Forno!
+   Segue abaixo o envio da O.S, referente a manutenção preventiva do Jequeri Ouro Preto!
 
     Data de envio:  ${dayjs().format("DD-MM-YYYY")}
-    Nome do Cliente: VDL Auto Forno
+    Nome do Cliente: Jequeri Ouro Preto
     Modelo/Marca do gravador: mhdx-3116
     Usuario: admin  
     Senha: 
@@ -79,7 +79,7 @@ CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
 
   // Adiciona título
   doc.setFontSize(22);
-  doc.text('Preventiva-VDL-Auto-Forno', 20, 20);
+  doc.text('Preventiva Jequeri Ouro Preto', 20, 20);
 
   // Adiciona subtítulo
   doc.setFontSize(16);
@@ -104,7 +104,7 @@ CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
   doc.text('Página 2', 20, 20);
 
   // Salva o PDF com o nome especificado
-  doc.save('VDL-Auto-Forno.pdf');
+  doc.save('Jequeri-Ouro-Preto.pdf');
 }
 
 // Chama a função para criar o PDF
@@ -119,7 +119,7 @@ const GeneratePDF = ()=>{
         <section className="w-full h-[90%] flex flex-col items-center">
             <section className="w-96 h-full overflow-y-auto justify-center items-center">
                 <div className="py-2">
-                    <h2 className="text-2xl my-4 text-amber-300">VDL Auto Forno</h2>
+                    <h2 className="text-2xl my-4 text-amber-300">Jequeri Ouro Preto</h2>
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Modelo DVR:</strong>

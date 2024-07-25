@@ -7,7 +7,7 @@ export default function Jequeri() {
         <Header/>
         <section className="w-full h-[90%] flex flex-col items-center overflow-y-auto justify-center">
             <CardService
-                path="/"
+                path="/Clients/Jequeri/Ouro-Preto"
                 service="Jequeri OP"
             />
             <CardService
@@ -15,11 +15,11 @@ export default function Jequeri() {
                 service="Jequeri Mercearia"
             />
             <CardService
-                path="/"
+                path="/Clients/Jequeri/Matriz"
                 service="Jequeri Matriz"
             />
             <CardService
-                path="/"
+                path="/Clients/Jequeri/Sao-Jose"
                 service="Jequeri São José"
             />
         </section>
