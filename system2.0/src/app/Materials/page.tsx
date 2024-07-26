@@ -14,8 +14,12 @@ export default function Materials() {
     const [materials, setMaterials] = useState<string>("")
 
     function createPdf(ev:React.FormEvent) {
+        try {
+          ev.preventDefault()
 
-        ev.preventDefault()
+          if(!client) return alert("Cliente não informado!")
+          if(client.length < 3) return alert("Cliente é necessario ter pelo menos 3 caracteres! ")
+          if(!materials) return alert("Materiais utilizados não informado!")
 
         const getInfos = `
 
@@ -64,7 +68,11 @@ export default function Materials() {
      
        // Salva o PDF com o nome especificado
        doc.save('Materiais-utilizados.pdf');
-     }
+     
+        } catch (error:any) {
+          alert(error.message)
+        }
+    }
 
     return (
         <main className="w-screen h-screen flex flex-col bg-black">
@@ -85,7 +93,7 @@ export default function Materials() {
                     onChange={(ev)=>{setMaterials(ev.target.value)}}
                     placeholder="Lista de materiais!"
                 />
-                    <Button className="w-80 h-12 my-4 bg-amber-400 text-xl">Gerar Lista</Button>
+                    <Button className="w-80 h-12 my-4 bg-amber-400 text-xl hover:bg-amber-400">Gerar Lista</Button>
                 </form>
             </section>
         </main>
