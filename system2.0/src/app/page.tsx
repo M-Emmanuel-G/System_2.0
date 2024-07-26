@@ -25,6 +25,10 @@ export default function Home() {
           path="/Clients"
           service="Clientes"
         />
+        <CardService
+          path="/Materials"
+          service="Materiais Utilizados"
+        />
       </section>
     </main>
   )

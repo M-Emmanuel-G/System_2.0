@@ -203,7 +203,7 @@ export default function SendOS() {
       if(!collaborator) return alert("Responsavel técnico não informado!")
 
       if(sentTo){
-        if(!sentTo.includes("@") || !sentTo.includes(".com")) return alert("Formato de email invalido!")
+        if(!sentTo.includes("@") || !sentTo.includes(".com")) return alert("Formato de email inválido!")
       }
 
       // createPdf();
