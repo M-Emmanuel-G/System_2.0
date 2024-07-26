@@ -4,12 +4,12 @@ import Header from "@/app/components/Header";
 import { Button } from "@/components/ui/button";
 import jsPDF from 'jspdf';
 // import * as fs from 'fs';
-import ImgCTTS from '../../../../assets/ctts-icon.png'
 import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
+import { LogoBase64 } from "@/app/assets/ImageBase64";
 
 
-export default function DVR01() {
+export default function PostoTotal() {
 
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
@@ -17,27 +17,18 @@ export default function DVR01() {
 function createPdf() {
 
    const getInfos = `
-
-
-
-
-
-
-
-   Segue abaixo o envio da O.S, referente a manutenção preventiva do Posto Total DVR01!
-
     Data de envio:  ${dayjs().format("DD-MM-YYYY")}
-    Nome do Cliente: Posto Total DVR01
-    Modelo/Marca do gravador: MHDX 3108
+    Nome do Cliente: Posto Total
+    Modelo/Marca do gravador: mhdx-3116
     Usuario: admin  
-    Senha: ctts0745
-    Total de cameras instaladas: 7 cameras
-    Cloud/NS: WJCH004667P
-    IP: 192.168.0.49
+    Senha: 
+    Total de cameras instaladas: 16
+    Cloud/NS: 
+    IP: 
     Porta de Serviço: 37777
     Porta  HTTP: 8087
-    Tamanho do HD/Armazenamento: 2 Terabytes
-    Tempo de Gravação: 18 dias
+    Tamanho do HD/Armazenamento: 1 Terabytes
+    Tempo de Gravação: 7 dias
 
                     Preventivas realizadas:
 
@@ -53,58 +44,56 @@ function createPdf() {
     limpeza interna do DVR.
     conferir se nobreak esta sustentando o sistema sem rede AC
     conferir estado físico das instalações / infra-estrutura
+    `
 
-
-
-
-
-Obrigado por conta com os serviços da CTTS...
-
-Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
-
-TEL  (31) 3979-1063 / (31) 98855-0745
-
-ctts@ctts.com.br / mauricio@ctts.com.br
-
-CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
-
-   `
-
-//    function convertImageToBase64(filePath: string): string {
-//     const imageBuffer = fs.readFileSync(filePath);
-//     return imageBuffer.toString('base64');
-//   }
 
   const doc = new jsPDF();
 
+  const imgData = LogoBase64
+  doc.addImage(imgData, 'PNG', 70, 0, 80, 30);
+
+  // 1-position x
+  // 2-position y
+  // 3-size width
+  // 5-size heigth
+
   // Adiciona título
-  doc.setFontSize(22);
-  doc.text('Preventiva Posto Total Pista', 20, 20);
+  doc.setFontSize(16);
+  doc.text(`Preventiva Posto Total                                        ${dayjs().format("DD-MM-YYYY")}  `, 20, 40);
 
   // Adiciona subtítulo
-  doc.setFontSize(16);
-  doc.text(dayjs().format("DD-MM-YYYY"), 20, 30);
+//   doc.setFontSize(16);
+//   doc.text(dayjs().format("DD-MM-YYYY"), 40, 50);
 
   // Adiciona um parágrafo
   doc.setFontSize(12);
   doc.text(
     getInfos,
-    20, 40, { maxWidth: 170 }
+    15, 60, { maxWidth: 170 }
   );
 
-  // Adiciona uma linha
-  doc.line(20, 70, 190, 70);
+  doc.text("Segue abaixo o envio da O.S, referente a manutenção preventiva do Posto Total!", 20,50)
 
-  // Adiciona uma imagem (assumindo que você tenha uma imagem chamada 'logo.png' no diretório atual)
-//   const imgData = convertImageToBase64("../../../../assets/ctts-icon.png") // Substitua '...' pelo conteúdo base64 da imagem
-//   doc.addImage(imgData, 'PNG', 20, 80, 50, 50);
+  doc.text(`
+  Obrigado por conta com os serviços da CTTS...
+
+  Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
+  
+  TEL  (31) 3979-1063 / (31) 98855-0745
+  
+  ctts@ctts.com.br / mauricio@ctts.com.br
+  
+  CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074`, 18,200)
+
+  // Adiciona uma linha
+//   doc.line(20, 70, 190, 70);
 
   // Adiciona uma nova página e texto nela
-  doc.addPage();
-  doc.text('Página 2', 20, 20);
+//   doc.addPage();
+//   doc.text('Página 2', 20, 20);
 
   // Salva o PDF com o nome especificado
-  doc.save('Preventiva-Total-Pista.pdf');
+  doc.save('Jequeri-Sao-Jose.pdf');
 }
 
 // Chama a função para criar o PDF
@@ -119,11 +108,11 @@ const GeneratePDF = ()=>{
         <section className="w-full h-[90%] flex flex-col items-center">
             <section className="w-96 h-full overflow-y-auto justify-center items-center">
                 <div className="py-2">
-                    <h2 className="text-2xl my-4 text-amber-300">Posto Ipiranga Pista</h2>
+                    <h2 className="text-2xl my-4 text-amber-300">Posto Total</h2>
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Modelo DVR:</strong>
-                    {/* <span className="mr-4">MHDX 3108</span> */}
+                    {/* <span className="mr-4">YESHI</span> */}
                 </div>
                 <div className="py-2 flex justify-between">
                     <strong>Usuario:</strong>

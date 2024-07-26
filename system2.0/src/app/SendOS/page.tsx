@@ -1,13 +1,16 @@
 'use client'
 
 import React, { useState } from "react"
-import emailjs from 'emailjs-com' 
+import emailjs, { send } from 'emailjs-com' 
 import { useRouter } from "next/navigation"
 import GetDate from "../services/GetDate"
 import Input from "../components/Input"
 import ModalAlert from "../components/modalAlert"
 import Header from "../components/Header"
 import Link from "next/link"
+import jsPDF from "jspdf"
+import dayjs from "dayjs"
+import { LogoBase64 } from "../assets/ImageBase64"
 
 interface SendOsProps{
   cliente:string,
@@ -39,6 +42,7 @@ export default function SendOS() {
   const [servicePort, setServeicePort] = useState('')
   const [httpPort, setHttpPort] = useState('')
   const [ddns, setDdns] = useState('Não tem.')
+  const [ns, setNs] = useState('')
   const [storage, setStorage] = useState('')
   const [recDays, setRecDays] = useState('')
   const [collaborator, setCollaborattor] = useState('Márcio')
@@ -46,62 +50,176 @@ export default function SendOS() {
   const [obs, setObs] = useState('')
 
   const [isOpen, setIsOpen] = useState(false)
-  
-  const router = useRouter()
 
   const onClose = ()=>{
     setIsOpen(false)
   }
 
-  const form = (ev:React.FormEvent)=>{
-    try {
-    ev.preventDefault()
+  // const form = (ev:React.FormEvent)=>{
+  //   try {
+  //   ev.preventDefault()
 
-    const body:SendOsProps = {
-      cliente: client,
-      data:GetDate(),
-      modelo: model,
-      usuario: user,
-      senha: password,
-      Cameras_Instaladas: qtdCam,
-      ip: ip,
-      Porta_Servico: servicePort,
-      Porta_HTTP: httpPort,
-      ddns: ddns,
-      Armazenamento: storage,
-      Dias_de_gravacao: recDays,
-      Observacao: obs,
-      Email_Cliente: sentTo,
-      colaborador: collaborator
-    }
+  //   const body:SendOsProps = {
+  //     cliente: client,
+  //     data:GetDate(),
+  //     modelo: model,
+  //     usuario: user,
+  //     senha: password,
+  //     Cameras_Instaladas: qtdCam,
+  //     ip: ip,
+  //     Porta_Servico: servicePort,
+  //     Porta_HTTP: httpPort,
+  //     ddns: ddns,
+  //     Armazenamento: storage,
+  //     Dias_de_gravacao: recDays,
+  //     Observacao: obs,
+  //     Email_Cliente: sentTo,
+  //     colaborador: collaborator
+  //   }
 
-    if(!client || !model || ! user || !password || !qtdCam || !ip || !servicePort || !httpPort || !ddns || !storage || !recDays || !collaborator ) return alert("Todas as informacoes são necessarias!") 
-    if(!sentTo.includes(".com") || !sentTo.includes("@")) return alert("Formato invalido de email");
+  //   if(!client || !model || ! user || !password || !qtdCam || !ip || !servicePort || !httpPort || !ddns || !storage || !recDays || !collaborator ) return alert("Todas as informacoes são necessarias!") 
+  //   if(!sentTo.includes(".com") || !sentTo.includes("@")) return alert("Formato invalido de email");
       
      
-      emailjs.send('service_ve702oh', 'template_qkpvdzv', body as any, '5ZxPWFsvg_-WP62gn')
-      .then((result) => {
-            router.push('/Processing')
-      }, (error) => {
-          console.log(error)
-      });
+  //     emailjs.send('service_ve702oh', 'template_qkpvdzv', body as any, '5ZxPWFsvg_-WP62gn')
+  //     .then((result) => {
+  //           router.push('/Processing')
+  //     }, (error) => {
+  //         console.log(error)
+  //     });
     
     
-    router.push("/Processing")
+  //   router.push("/Processing")
     
-   } catch (error:any) {
-    alert(error.message)
-   }
+  //  } catch (error:any) {
+  //   alert(error.message)
+  //  }
 
-  }
+  // }
+
+  function createPdf() {
+
+    const getInfos = `
+     Data da preventiva:  ${dayjs().format("DD-MM-YYYY")}
+     Nome do Cliente: ${client}
+     Modelo/Marca do gravador: ${model}
+     Usuario: ${user}
+     Senha: ${password}
+     Total de cameras instaladas: ${qtdCam}
+     Cloud/NS: ${ns}
+     IP: ${ip}
+     Porta de Serviço: ${servicePort}
+     Porta  HTTP: ${httpPort}
+     Tamanho do HD/Armazenamento: ${storage}
+     Tempo de Gravação: ${recDays}
+ 
+                     Preventivas realizadas:
+ 
+     conferir limpeza das lentes de cameras
+     conferir limpeza dos sensores de alarmes
+     conferir acesso remoto
+     conferir se estao gravando por detecção de movimento
+     conferir data e hora durante a reprodução
+     conferir o sistema de sonorização
+     conferir o sistema de de alarme
+     conferir o sistema de interfonia
+     limpeza do rack(Se necessário)
+     limpeza interna do DVR.
+     conferir se nobreak esta sustentando o sistema sem rede AC
+     conferir estado físico das instalações / infra-estrutura
+
+     Observações: 
+        ${obs}
+      `
+ 
+ 
+   const doc = new jsPDF();
+ 
+   const imgData = LogoBase64
+   doc.addImage(imgData, 'PNG', 70, 0, 80, 30);
+ 
+   // 1-position x
+   // 2-position y
+   // 3-size width
+   // 5-size heigth
+ 
+   // Adiciona título
+   doc.setFontSize(16);
+   doc.text(`${client}`, 20, 40);
+ 
+   // Adiciona subtítulo
+ //   doc.setFontSize(16);
+ //   doc.text(dayjs().format("DD-MM-YYYY"), 40, 50);
+ 
+   // Adiciona um parágrafo
+   doc.setFontSize(12);
+   doc.text(
+     getInfos,
+     15, 60, { maxWidth: 170 }
+   );
+ 
+   doc.text(`Segue abaixo o envio da O.S, referente a manutenção preventiva do ${client}`, 20,50)
+ 
+   doc.text(`
+   Obrigado por conta com os serviços da CTTS...
+ 
+   Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
+   
+   TEL  (31) 3979-1063 / (31) 98855-0745
+   
+   ctts@ctts.com.br / mauricio@ctts.com.br
+   
+   CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074`, 18,240)
+ 
+   // Adiciona uma linha
+   doc.text(` Responsavel técnico: ${collaborator}`,20, 230);
+ 
+   // Adiciona uma nova página e texto nela
+ //   doc.addPage();
+ //   doc.text('Página 2', 20, 20);
+ 
+   // Salva o PDF com o nome especificado
+   doc.save(`Preventiva-${client}.pdf`);
+ }
+ 
+ // Chama a função para criar o PDF
+ 
+ const GeneratePDF = (ev:React.FormEvent)=>{
+     try {
+
+      ev.preventDefault()
+
+      if(!client) return alert("Cliente não informado!")
+      if(!model) return alert("Modelo de DVR/NVR não informado!")
+      if(!user) return alert("Usuario não informado!")
+      if(!password) return alert("Senha não informado!")
+      if(!qtdCam) return alert("Quantidade de câmera não informado!")
+      if(!ip) return alert("IP não informado!")
+      if(!servicePort) return alert("Porta de serviço não informado!")
+      if(!httpPort) return alert("Porta HTTP não informado!")
+      if(!ns) return alert("Numero de série/CLOUD não informado!")
+      if(!storage) return alert("Armazenamento não informado!")
+      if(!recDays) return alert("Dias de gravação não informado!")
+      if(!collaborator) return alert("Responsavel técnico não informado!")
+
+      if(sentTo){
+        if(!sentTo.includes("@") || !sentTo.includes(".com")) return alert("Formato de email invalido!")
+      }
+
+      // createPdf();
+
+     } catch (error:any) {
+      alert(error.message)
+     }
+ }
 
   return (
     <main className="w-screen h-screen min-h-screen flex flex-col items-center justify-between bg-black text-white">
       <section className="w-96 h-[90%] flex  items-center flex-col  overflow-y-auto">
-        <h2 className="text-2xl my-8">Formulario de Preventivas</h2>
-        <form onSubmit={form}>
+        <h2 className="text-2xl my-8 text-amber-400">Formulario de Preventivas</h2>
+        <form onSubmit={GeneratePDF}>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-xl">Informações Basicas</h3>
+            <h3 className="text-xl text-amber-400">Informações Basicas</h3>
             <Input
               value={client}
               onChange={(ev)=>{setClient(ev.target.value)}}
@@ -129,7 +247,7 @@ export default function SendOS() {
             />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-xl">Rede:</h3>
+            <h3 className="text-xl text-amber-400">Rede:</h3>
             <Input
               value={ip}
               onChange={(ev)=>{setIp(ev.target.value)}}
@@ -150,9 +268,14 @@ export default function SendOS() {
               onChange={(ev)=>{setDdns(ev.target.value)}}
               placeholder="DDNS"
             />
+            <Input
+              value={ns}
+              onChange={(ev)=>{setNs(ev.target.value)}}
+              placeholder="Numero de serie/Cloud"
+            />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-xl">Armazenamento:</h3>
+            <h3 className="text-xl text-amber-400">Armazenamento:</h3>
             <Input
               value={storage}
               onChange={(ev)=>{setStorage(ev.target.value)}}
@@ -165,7 +288,7 @@ export default function SendOS() {
             />
           </div>
           <div className="flex flex-col items-center justify-center">
-            <h3 className="text-xl">Informações Adicionais:</h3>
+            <h3 className="text-xl text-amber-400">Informações Adicionais:</h3>
             <textarea
               className="text-black outline-none"
               cols={28}
@@ -190,22 +313,14 @@ export default function SendOS() {
             
           </div>
           <div className=" w-full flex items-center flex-col">
-            <button className="w-80 h-8 bg-lime-400 rounded-xl my-2 mb-4">Enviar</button>
+            <button className="w-80 h-8 bg-amber-400 text-xl rounded-xl my-4 mb-4">Enviar</button>
             <Link
               href="/"
-              className="w-80 h-8 flex items-center justify-center bg-lime-400 rounded-xl p-0 m-0"
+              className="w-80 h-8 flex items-center justify-center bg-amber-400 text-xl rounded-xl p-0 m-0 my-4"
               >Voltar</Link>
           </div>
         </form>
       </section>
-      {
-        isOpen &&
-        <ModalAlert
-          text="Todas as informações precisam ser inseridas!"
-          path="/"
-          onClose={onClose}
-        />
-      }
     </main>
   )
 }

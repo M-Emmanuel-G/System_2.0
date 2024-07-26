@@ -18,15 +18,6 @@ export default function SaoJose() {
 function createPdf() {
 
    const getInfos = `
-
-
-
-
-
-
-
-   
-
     Data de envio:  ${dayjs().format("DD-MM-YYYY")}
     Nome do Cliente: Jequeri São José
     Modelo/Marca do gravador: mhdx-3116
@@ -54,27 +45,8 @@ function createPdf() {
     limpeza interna do DVR.
     conferir se nobreak esta sustentando o sistema sem rede AC
     conferir estado físico das instalações / infra-estrutura
+    `
 
-
-
-
-
-Obrigado por conta com os serviços da CTTS...
-
-Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
-
-TEL  (31) 3979-1063 / (31) 98855-0745
-
-ctts@ctts.com.br / mauricio@ctts.com.br
-
-CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
-
-   `
-
-//    function convertImageToBase64(filePath: string): string {
-//     const imageBuffer = fs.readFileSync(filePath);
-//     return imageBuffer.toString('base64');
-//   }
 
   const doc = new jsPDF();
 
@@ -98,10 +70,21 @@ CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
   doc.setFontSize(12);
   doc.text(
     getInfos,
-    15, 10, { maxWidth: 170 }
+    15, 60, { maxWidth: 170 }
   );
 
-  doc.text("Segue abaixo o envio da O.S, referente a manutenção preventiva do Jequeri São José!", 10,20)
+  doc.text("Segue abaixo o envio da O.S, referente a manutenção preventiva do Jequeri São José!", 20,50)
+
+  doc.text(`
+  Obrigado por conta com os serviços da CTTS...
+
+  Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
+  
+  TEL  (31) 3979-1063 / (31) 98855-0745
+  
+  ctts@ctts.com.br / mauricio@ctts.com.br
+  
+  CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074`, 18,200)
 
   // Adiciona uma linha
 //   doc.line(20, 70, 190, 70);

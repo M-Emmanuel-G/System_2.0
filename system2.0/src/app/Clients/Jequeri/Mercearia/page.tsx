@@ -7,6 +7,7 @@ import jsPDF from 'jspdf';
 import ImgCTTS from '../../../../assets/ctts-icon.png'
 import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
+import { LogoBase64 } from "@/app/assets/ImageBase64";
 
 
 export default function DVR01() {
@@ -17,17 +18,8 @@ export default function DVR01() {
 function createPdf() {
 
    const getInfos = `
-
-
-
-
-
-
-
-   Segue abaixo o envio da O.S, referente a manutenção preventiva do Jequeri Mercearia!
-
     Data de envio:  ${dayjs().format("DD-MM-YYYY")}
-    Nome do Cliente: Jequeri Mercearia
+    Nome do Cliente: Jequeri São José
     Modelo/Marca do gravador: mhdx-3116
     Usuario: admin  
     Senha: 
@@ -53,58 +45,56 @@ function createPdf() {
     limpeza interna do DVR.
     conferir se nobreak esta sustentando o sistema sem rede AC
     conferir estado físico das instalações / infra-estrutura
+    `
 
-
-
-
-
-Obrigado por conta com os serviços da CTTS...
-
-Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
-
-TEL  (31) 3979-1063 / (31) 98855-0745
-
-ctts@ctts.com.br / mauricio@ctts.com.br
-
-CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
-
-   `
-
-//    function convertImageToBase64(filePath: string): string {
-//     const imageBuffer = fs.readFileSync(filePath);
-//     return imageBuffer.toString('base64');
-//   }
 
   const doc = new jsPDF();
 
+  const imgData = LogoBase64
+  doc.addImage(imgData, 'PNG', 70, 0, 80, 30);
+
+  // 1-position x
+  // 2-position y
+  // 3-size width
+  // 5-size heigth
+
   // Adiciona título
-  doc.setFontSize(22);
-  doc.text('Preventiva Jequeri Mercearia', 20, 20);
+  doc.setFontSize(16);
+  doc.text(`Preventiva Jequeri São José                                        ${dayjs().format("DD-MM-YYYY")}  `, 20, 40);
 
   // Adiciona subtítulo
-  doc.setFontSize(16);
-  doc.text(dayjs().format("DD-MM-YYYY"), 20, 30);
+//   doc.setFontSize(16);
+//   doc.text(dayjs().format("DD-MM-YYYY"), 40, 50);
 
   // Adiciona um parágrafo
   doc.setFontSize(12);
   doc.text(
     getInfos,
-    20, 40, { maxWidth: 170 }
+    15, 60, { maxWidth: 170 }
   );
 
-  // Adiciona uma linha
-  doc.line(20, 70, 190, 70);
+  doc.text("Segue abaixo o envio da O.S, referente a manutenção preventiva do Jequeri São José!", 20,50)
 
-  // Adiciona uma imagem (assumindo que você tenha uma imagem chamada 'logo.png' no diretório atual)
-//   const imgData = convertImageToBase64("../../../../assets/ctts-icon.png") // Substitua '...' pelo conteúdo base64 da imagem
-//   doc.addImage(imgData, 'PNG', 20, 80, 50, 50);
+  doc.text(`
+  Obrigado por conta com os serviços da CTTS...
+
+  Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
+  
+  TEL  (31) 3979-1063 / (31) 98855-0745
+  
+  ctts@ctts.com.br / mauricio@ctts.com.br
+  
+  CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074`, 18,200)
+
+  // Adiciona uma linha
+//   doc.line(20, 70, 190, 70);
 
   // Adiciona uma nova página e texto nela
-  doc.addPage();
-  doc.text('Página 2', 20, 20);
+//   doc.addPage();
+//   doc.text('Página 2', 20, 20);
 
   // Salva o PDF com o nome especificado
-  doc.save('Jequeri-mercearia.pdf');
+  doc.save('Jequeri-Sao-Jose.pdf');
 }
 
 // Chama a função para criar o PDF

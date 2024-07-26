@@ -10,13 +10,13 @@ export default function PostoIpiranga() {
             href="/Clients/Postos/PostoIpiranga/DVR01"
             className=" w-96 h-20 bg-amber-400 rounded-xl my-2 flex justify-center items-center"
         >
-            <strong>DVR Pista</strong>
+            <strong>DVR Escritorio</strong>
         </Link>
         <Link 
             href="/Clients/Postos/PostoIpiranga/DVR02"
             className=" w-96 h-20 bg-amber-400 rounded-xl my-2 flex justify-center items-center"
         >
-            <strong>DVR Escritorio</strong>
+            <strong>DVR Pista</strong>
         </Link>
         </section>
    </main>
