@@ -77,7 +77,7 @@ export default function Materials() {
     return (
         <main className="w-screen h-screen flex flex-col bg-black">
             <Header/>
-            <section className="w-full h-[90%] flex items-center justify-center text-white flex-col text-2xl">
+            <section className="w-full h-[90%] flex items-center justify-center text-white flex-col text-2xl overflow-y-auto">
                 <h2 className="my-8" >Materiais utilizados</h2>
                 <form className="flex flex-col" onSubmit={createPdf}>
                     <Input
