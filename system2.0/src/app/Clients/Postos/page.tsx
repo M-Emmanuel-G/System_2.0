@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Header from "../../components/Header";
+import { db } from "@/lib/prisma";
 
-export default function GasStation() {
+export default async function GasStation() {
+    
     return (
         <main className="w-screen h-screen flex flex-col bg-black">
             <Header/>

@@ -22,7 +22,7 @@ export default function Home() {
           service="Enviar OS"
         />
         <CardService
-          path="/Clients"
+          path="/Login"
           service="Clientes"
         />
         <CardService

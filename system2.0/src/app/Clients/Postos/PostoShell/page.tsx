@@ -1,8 +1,10 @@
 import Header from "@/app/components/Header";
+import { db } from "@/lib/prisma";
 import Link from "next/link";
 
-export default function PostoShell() {
- return (
+export default async function PostoShell() {   
+ 
+    return (
    <main className="w-screen h-screen flex flex-col justify-center itmes-center bg-black">
         <Header/>
         <section className="w-full h-[90%] flex flex-col items-center justify-center overflow-y-auto">

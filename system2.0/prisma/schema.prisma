@@ -18,3 +18,30 @@ model Images{
   imageUrl String
   nameArchive String @default("Arquivo")
 }
+
+model Clients{
+  id String @id @default(cuid())
+  client String
+
+  dvr DVRs []
+
+}
+
+model DVRs{
+  id String @id @default(cuid())
+  model String
+  cams_installed String
+  user String
+  password String
+  ip String
+  cloud String
+  service_port String
+  http_port String
+  ddns String
+  hd String
+  recording_days String
+  
+  client String
+
+  clients Clients @relation(fields: [id], references: [id])
+}

@@ -1,8 +1,11 @@
-import Link from "next/link";
 import Header from "../components/Header";
 import CardService from "../components/CardService";
+import { db } from "@/lib/prisma";
 
-export default function Clients() {
+export default async function Clients() {
+
+    const getClients = await db.clients.findMany()
+
     return (
         <main className="w-screen h-screen flex flex-col bg-black">
             <Header/>
