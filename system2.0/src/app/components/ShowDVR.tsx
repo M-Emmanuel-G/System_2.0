@@ -18,6 +18,22 @@ import jsPDF from "jspdf";
 import GetDate from "../services/GetDate";
 import { LogoBase64 } from "../assets/ImageBase64";
 
+// interface DVRProps{
+//     model:string
+//     user:string
+//     password:string
+//     cams_installed:string
+//     ip:string
+//     service_port:string
+//     http_port:string
+//     recording_days:string
+//     client:string
+//     hd:string
+//     cloud:string
+//     ddns:string
+    
+// }
+
 export default function ShowDVR(dvr:DVRs) {
 
     dayjs.locale('pt-br');
@@ -36,7 +52,7 @@ export default function ShowDVR(dvr:DVRs) {
         Segue abaixo o envio da O.S., referente a manutenção preventiva, de Posto Shell!
      
          Data de envio:  ${GetDate()}
-         Nome do Cliente:
+         Nome do Cliente: ${dvr.client}
          Modelo/Marca do gravador: ${dvr.model}
          Usuario: ${dvr.user} 
          Senha: ${dvr.password}

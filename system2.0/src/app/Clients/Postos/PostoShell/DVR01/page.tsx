@@ -19,8 +19,6 @@ export default async function DVR01() {
         }
     })
 
-    console.log(allDvrs[0]);
-
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
 
@@ -33,7 +31,7 @@ export default async function DVR01() {
             <ShowDVR
                 key={allDvrs[0].dvr[0].id}
                 cams_installed={allDvrs[0].dvr[0].cams_installed}
-                client={allDvrs[0].dvr[0].client}
+                client={allDvrs[0].client}
                 user={allDvrs[0].dvr[0].user}
                 password={allDvrs[0].dvr[0].password}
                 id={allDvrs[0].dvr[0].id}
