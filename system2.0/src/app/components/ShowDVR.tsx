@@ -94,15 +94,10 @@ export default function ShowDVR(dvr:DVRs) {
      
         `
      
-     //    function convertImageToBase64(filePath: string): string {
-     //     const imageBuffer = fs.readFileSync(filePath);
-     //     return imageBuffer.toString('base64');
-     //   }
-     
        const doc = new jsPDF();
      
        // Adiciona título
-       doc.setFontSize(22);
+       doc.setFontSize(18);
        doc.text(`Preventiva: ${dvr.client}`, 20, 60);
      
        // Adiciona subtítulo
@@ -132,7 +127,7 @@ export default function ShowDVR(dvr:DVRs) {
             <AlertDialogTrigger className="w-80 text-black text-xl bg-orange-500 rounded-xl p-4">Informações do DVR</AlertDialogTrigger>
             <AlertDialogContent className="bg-black border-0 overflow-y-auto">
                 <AlertDialogHeader>
-                <AlertDialogTitle className="text-amber-300">Posto Shell Escritório</AlertDialogTitle>
+                <AlertDialogTitle className="text-amber-300">{dvr.client}</AlertDialogTitle>
                 <AlertDialogDescription>
                 <section className="w-full h-[500px] overflow-y-auto justify-center items-center text-white">
                 <div className="py-2 flex justify-between">
