@@ -45,9 +45,3 @@ model DVRs{
 
   clients Clients @relation(fields: [id], references: [id])
 }
-
-model Users{
-  id String @id @default(cuid())
-  name String
-  registration String
-}
