@@ -1,16 +1,12 @@
 import Header from "@/app/components/Header";
-import { Button } from "@/components/ui/button";
-import jsPDF from 'jspdf';
-// import * as fs from 'fs';
-import ImgCTTS from '../../../../assets/ctts-icon.png'
 import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
-import { db } from "@/lib/prisma";
 import ShowDVR from "@/app/components/ShowDVR";
 import UpdateDVR from "@/app/components/EditInfos";
+import { db } from "@/lib/prisma";
 
 
-export default async function DVR02() {
+export default async function SaoJose() {
 
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
@@ -20,23 +16,21 @@ export default async function DVR02() {
             dvr:true
         },
         where:{
-            id:"clzalqpq0000110r22iww61r5"
+            id:"clzhmagl6000028dkbbqul2rv"
         }
     })
 
-
-
  return (
-   <main className="w-screen h-screen flex flex-col justify-center itmes-center bg-black text-white">
+    <main className="w-screen h-screen flex flex-col justify-center itmes-center bg-black text-white">
         <Header/>
         <section className="w-full h-[90%] flex flex-col items-center justify-center">
-        <ShowDVR
-                id={allDvrs[0].dvr[0].id}
+            <ShowDVR
                 key={allDvrs[0].dvr[0].id}
                 cams_installed={allDvrs[0].dvr[0].cams_installed}
                 client={allDvrs[0].client}
                 user={allDvrs[0].dvr[0].user}
                 password={allDvrs[0].dvr[0].password}
+                id={allDvrs[0].dvr[0].id}
                 ip={allDvrs[0].dvr[0].ip}
                 service_port={allDvrs[0].dvr[0].service_port}
                 http_port={allDvrs[0].dvr[0].http_port}
@@ -47,7 +41,7 @@ export default async function DVR02() {
                 model={allDvrs[0].dvr[0].model}
                 
             />
-          <UpdateDVR
+            <UpdateDVR
                  key={allDvrs[0].dvr[0].id}
                  cams_installed={allDvrs[0].dvr[0].cams_installed}
                  client={allDvrs[0].client}
@@ -64,6 +58,6 @@ export default async function DVR02() {
                  model={allDvrs[0].dvr[0].model}
             />
         </section>
-   </main>
+    </main>
  );
 }

@@ -11,7 +11,7 @@ const CardService = ({service, path}:CardProps)=> {
  return (
     <Card className="w-[300px] h-[40px] flex justify-center items-center relative m-4 bg-black border-none">
       <CardContent className=" w-full h-full flex justify-center items-center m-0 p-0">
-        <Link className="w-full h-full flex items-center justify-center absolute bg-amber-400 text-black rounded-xl" href={path}>
+        <Link className="w-full h-full flex items-center justify-center absolute bg-orange-500 text-black rounded-xl" href={path}>
         <strong>{service}</strong>
         </Link>
         <ChevronRight className="absolute right-4"/>

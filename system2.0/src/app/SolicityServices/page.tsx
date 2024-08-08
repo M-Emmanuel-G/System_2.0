@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import Header from "../components/Header";
-import { Button } from "@/components/ui/button";
 import jsPDF from "jspdf";
 import { LogoBase64 } from "../assets/ImageBase64";
 import dayjs from "dayjs";
 import Input from "../components/Input";
+import { Button } from "@/components/ui/button";
 
-export default function Materials() {
+const SolicityService = () => {
 
-    const [client, setClient] = useState<string>("")
     const [materials, setMaterials] = useState<string>("")
+    const [client, setClient] = useState<string>("")
 
     function createPdf(ev:React.FormEvent) {
         try {
@@ -19,13 +19,13 @@ export default function Materials() {
 
           if(!client) return alert("Cliente não informado!")
           if(client.length < 3) return alert("Cliente é necessario ter pelo menos 3 caracteres! ")
-          if(!materials) return alert("Materiais utilizados não informado!")
+          if(!materials) return alert("Solicitação não informado!")
 
         const getInfos = `
 
-          Materiais utilizados: 
+            Serviços solicitados
 
-                    ${materials}
+            ${materials}
        
          `
      
@@ -40,7 +40,7 @@ export default function Materials() {
      
        // Adiciona subtítulo
        doc.setFontSize(12);
-       doc.text(`${client}                                                                                                          ${dayjs().format("DD-MM-YYYY")}`, 40, 50);
+       doc.text(`${client}                                                                                                ${dayjs().format("DD-MM-YYYY")}`, 40, 50);
      
        // Adiciona um parágrafo
        doc.setFontSize(12);
@@ -67,18 +67,17 @@ export default function Materials() {
      //   doc.text('Página 2', 20, 20);
      
        // Salva o PDF com o nome especificado
-       doc.save('Materiais-utilizados.pdf');
+       doc.save(`Solicitacao-${client}.pdf`);
      
         } catch (error:any) {
           alert(error.message)
         }
     }
 
-    return (
-        <main className="w-screen h-screen flex flex-col bg-black">
+    return ( 
+        <main className="w-screen h-screen flex flex-col items-center justify-center bg-black">
             <Header/>
-            <section className="w-full h-[90%] flex items-center justify-center text-white flex-col text-2xl overflow-y-auto">
-                <h2 className="my-8" >Materiais utilizados</h2>
+            <section className="w-full h-[90%] flex items-center justify-center">
                 <form className="flex flex-col" onSubmit={createPdf}>
                     <Input
                         onChange={(ev)=>{setClient(ev.target.value)}}
@@ -91,11 +90,13 @@ export default function Materials() {
                     rows={20}
                     value={materials}
                     onChange={(ev)=>{setMaterials(ev.target.value)}}
-                    placeholder="Lista de materiais!"
+                    placeholder="Solicitação!"
                 />
-                    <Button className="w-80 h-12 my-4 bg-amber-400 text-xl hover:bg-amber-400">Gerar Lista</Button>
+                    <Button className="w-80 h-12 my-4 bg-amber-400 text-xl hover:bg-amber-400">Gerar Solicitação</Button>
                 </form>
             </section>
         </main>
-    );
+     );
 }
+ 
+export default SolicityService;

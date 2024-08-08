@@ -22,12 +22,16 @@ export default function Home() {
           service="Enviar OS"
         />
         <CardService
-          path="/Clients"
+          path="/Login"
           service="Clientes"
         />
         <CardService
           path="/Materials"
           service="Materiais Utilizados"
+        />
+        <CardService
+          path="/SolicityServices"
+          service="Solicitação de serviços"
         />
       </section>
     </main>
