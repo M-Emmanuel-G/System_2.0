@@ -206,7 +206,7 @@ export default function SendOS() {
         if(!sentTo.includes("@") || !sentTo.includes(".com")) return alert("Formato de email inválido!")
       }
 
-      // createPdf();
+      createPdf();
 
      } catch (error:any) {
       alert(error.message)

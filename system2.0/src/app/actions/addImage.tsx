@@ -9,10 +9,5 @@ interface UploadProps{
 }
 
 export default async function AddImage({imageUrl, nameArchive}:UploadProps) {
-    await db.images.create({
-        data:{
-            imageUrl,
-            nameArchive
-        }
-    })
+  
 }

@@ -11,30 +11,17 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
-import { DVRs } from "@prisma/client";
 import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
 import jsPDF from "jspdf";
 import GetDate from "../services/GetDate";
 import { LogoBase64 } from "../assets/ImageBase64";
+import { dvr } from "@prisma/client";
+import { DvrsProps } from "../Data/register";
+import { ChevronRight } from "lucide-react";
 
-// interface DVRProps{
-//     model:string
-//     user:string
-//     password:string
-//     cams_installed:string
-//     ip:string
-//     service_port:string
-//     http_port:string
-//     recording_days:string
-//     client:string
-//     hd:string
-//     cloud:string
-//     ddns:string
-    
-// }
 
-export default function ShowDVR(dvr:DVRs) {
+export default function ShowDVR(dvr:DvrsProps) {
 
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
@@ -119,12 +106,12 @@ export default function ShowDVR(dvr:DVRs) {
        doc.addImage(imgData, 'PNG', 80, 10, 60, 40);
      
        // Salva o PDF com o nome especificado
-       doc.save(`${dvr.client}.pdf`);
+       doc.save(`Preventiva - ${dvr.client}.pdf`);
      }
 
     return (
         <AlertDialog>
-            <AlertDialogTrigger className="w-80 text-black text-xl bg-orange-500 rounded-xl p-4">Informações do DVR</AlertDialogTrigger>
+            <AlertDialogTrigger className="w-80 text-black text-xl bg-orange-500 rounded-xl p-4 flex my-2 items-center justify-between">{dvr.client} <ChevronRight/> </AlertDialogTrigger>
             <AlertDialogContent className="bg-black border-0 overflow-y-auto">
                 <AlertDialogHeader>
                 <AlertDialogTitle className="text-amber-300">{dvr.client}</AlertDialogTitle>

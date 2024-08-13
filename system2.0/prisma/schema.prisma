@@ -13,35 +13,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Images{
-  id String @id @default(cuid())
-  imageUrl String
-  nameArchive String @default("Arquivo")
+model user {
+  id    String     @id @default(cuid()) 
+  email String  @unique
+  name  String?
 }
 
-model Clients{
+model dvr{
   id String @id @default(cuid())
-  client String
-
-  dvr DVRs []
-
-}
-
-model DVRs{
-  id String @id @default(cuid())
-  model String
-  cams_installed String
-  user String
-  password String
-  ip String
-  cloud String
-  service_port String
-  http_port String
-  ddns String
-  hd String
-  recording_days String
-  
-  client String
-
-  clients Clients @relation(fields: [id], references: [id])
+  name_Client String @default("name_Client")
+  model String @default("modelo")
+  cams_installed String @default("cameras instaladas")
+  user String @default("usuario")
+  password String @default("senha")
+  ip String @default("ip")
+  cloud String @default("cloud")
+  service_port String @default("porta servico")
+  http_port String @default("porta http")
+  ddns String @default("ddns")
+  hd String @default("Tamanho HD")
+  recording_days String @default("Dias de gravacao")
 }
