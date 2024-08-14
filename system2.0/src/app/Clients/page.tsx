@@ -1,5 +1,4 @@
 import { DVRs, DvrsProps } from "../Data/register";
-import CardService from "../components/CardService";
 import Header from "../components/Header";
 import ShowDVR from "../components/ShowDVR";
 

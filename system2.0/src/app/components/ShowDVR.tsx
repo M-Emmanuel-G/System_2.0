@@ -11,104 +11,12 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
   } from "@/components/ui/alert-dialog"
-import dayjs from 'dayjs'
-import localeData from 'dayjs/plugin/localeData'
-import jsPDF from "jspdf";
-import GetDate from "../services/GetDate";
-import { LogoBase64 } from "../assets/ImageBase64";
-import { dvr } from "@prisma/client";
 import { DvrsProps } from "../Data/register";
 import { ChevronRight } from "lucide-react";
+import UpdateDVR from "./EditInfos";
 
 
 export default function ShowDVR(dvr:DvrsProps) {
-
-    dayjs.locale('pt-br');
-    dayjs.extend(localeData);
-
-    function createPdf() {
-
-        const getInfos = `
-     
-     
-     
-     
-     
-     
-     
-        Segue abaixo o envio da O.S., referente a manutenção preventiva, de Posto Shell!
-     
-         Data de envio:  ${GetDate()}
-         Nome do Cliente: ${dvr.client}
-         Modelo/Marca do gravador: ${dvr.model}
-         Usuario: ${dvr.user} 
-         Senha: ${dvr.password}
-         Total de cameras instaladas: ${dvr.cams_installed}
-         IP: ${dvr.ip}
-         Porta de Serviço: ${dvr.service_port}
-         Porta  HTTP: ${dvr.http_port} 
-         Tamanho do HD/Armazenamento: ${dvr.hd}
-         Tempo de Gravação: ${dvr.recording_days} dias
-     
-                         Preventivas realizadas:
-     
-         conferir limpeza das lentes de cameras
-         conferir limpeza dos sensores de alarmes
-         conferir acesso remoto
-         conferir se estao gravando por detecção de movimento
-         conferir data e hora durante a reprodução
-         conferir o sistema de sonorização
-         conferir o sistema de de alarme
-         conferir o sistema de interfonia
-         limpeza do rack(Se necessário)
-         limpeza interna do DVR.
-         conferir se nobreak esta sustentando o sistema sem rede AC
-         conferir estado físico das instalações / infra-estrutura
-     
-     
-     
-     
-     
-     Obrigado por conta com os serviços da CTTS...
-     
-     Rua São Paulo, 103, Bela Vista, Itabirito-MG, CEP 35450-120
-     
-     TEL  (31) 3979-1063 / (31) 98855-0745
-     
-     ctts@ctts.com.br / mauricio@ctts.com.br
-     
-     CNPJ - 08.627124/0001-03      INSC. EST.  - 001.033.657.0074
-     
-        `
-     
-       const doc = new jsPDF();
-     
-       // Adiciona título
-       doc.setFontSize(18);
-       doc.text(`Preventiva: ${dvr.client}`, 20, 60);
-     
-       // Adiciona subtítulo
-       doc.setFontSize(16);
-       doc.text(dayjs().format("DD-MM-YYYY"), 20, 68);
-     
-       // Adiciona um parágrafo
-       doc.setFontSize(12);
-       doc.text(
-         getInfos,
-         20, 40, { maxWidth: 170 }
-       );
-     
-       // Adiciona uma linha
-       doc.line(20, 70, 190, 70);
-     
-    //    Adiciona uma imagem (assumindo que você tenha uma imagem chamada 'logo.png' no diretório atual)
-       const imgData = LogoBase64 // Substitua '...' pelo conteúdo base64 da imagem
-       doc.addImage(imgData, 'PNG', 80, 10, 60, 40);
-     
-       // Salva o PDF com o nome especificado
-       doc.save(`Preventiva - ${dvr.client}.pdf`);
-     }
-
     return (
         <AlertDialog>
             <AlertDialogTrigger className="w-80 text-black text-xl bg-orange-500 rounded-xl p-4 flex my-2 items-center justify-between">{dvr.client} <ChevronRight/> </AlertDialogTrigger>
@@ -175,8 +83,24 @@ export default function ShowDVR(dvr:DvrsProps) {
                 </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
+                    <UpdateDVR
+                        cams_installed={dvr.cams_installed}
+                        client={dvr.client}
+                        cloud={dvr.cloud}
+                        ddns={dvr.ddns}
+                        hd={dvr.hd}
+                        http_port={dvr.http_port}
+                        ip={dvr.ip}
+                        model={dvr.model}
+                        nickClient={dvr.nickClient}
+                        password={dvr.password}
+                        recording_days={dvr.recording_days}
+                        service_port={dvr.service_port}
+                        user={dvr.user}
+                        id={dvr.id}
+                        key={dvr.id}
+                    />
                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                <AlertDialogAction onClick={createPdf}>Gerar PDF</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
