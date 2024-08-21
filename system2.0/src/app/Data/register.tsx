@@ -1,3 +1,5 @@
+
+
 export interface DvrsProps{
     id: string
     client :string
@@ -18,11 +20,15 @@ export interface DvrsProps{
 export const codRegData = [
     {
         cod:"001",
-        name:"Márcio"
+        name:"Márcio",
+        keyAccess:"0021x"
     }
 ]
 
 export const DVRs = [
+
+    // POSTOS
+
     {
         id:"DJHBEHWIUH89WEKDNSADAS2-2m2",
         client:"Posto V&G 01",
@@ -37,7 +43,7 @@ export const DVRs = [
         hd:"2TB",
         cloud:"EKHH4601977CO",
         ddns:"nao se aplica",
-        nickClient:"Posto V&G",
+        nickClient:"Postos",
     },
     {
         id:"sjc92-cne2icm2-ndjs-2-2m2",
@@ -53,7 +59,7 @@ export const DVRs = [
         hd:"2TB",
         cloud:"XO6M1700094H4",
         ddns:"nao se aplica",
-        nickClient:"Posto V&G",
+        nickClient:"Postos",
     },
     {
         id:"c0n8nf30n2d---KDNSADAS2-2m2",
@@ -69,7 +75,7 @@ export const DVRs = [
         hd:"2TB",
         cloud:"WJCH07004667P",
         ddns:"nao se aplica",
-        nickClient:"Posto Ipiranga",
+        nickClient:"Postos",
     },
     {
         id:"3920sjc92-cne2SALKDNSADAS2-2m2",
@@ -85,7 +91,7 @@ export const DVRs = [
         hd:"2TB",
         cloud:"KS7FF08074327P",
         ddns:"nao se aplica",
-        nickClient:"Posto Ipiranga",
+        nickClient:"Postos",
     },
     {
         id:"sjc92-cne2SA-22SDKPK20K2",
@@ -101,7 +107,7 @@ export const DVRs = [
         hd:"1TB",
         cloud:"J2AF2900034HR",
         ddns:"nao se aplica",
-        nickClient:"Posto Total",
+        nickClient:"Postos",
     },
     {
         id:"ZZXsjc92-cne2SAJBSNNAON2-2m2",
@@ -117,8 +123,11 @@ export const DVRs = [
         hd:"2TB",
         cloud:"ORYE3802325MO",
         ddns:"nao se aplica",
-        nickClient:"Posto Total",
+        nickClient:"Postos",
     },
+
+    // VDL 
+
     {
         id:"sjc92-cneo924j0d2j20",
         client:"VDL Sinterização",
@@ -233,17 +242,17 @@ export const DVRs = [
     },
     {
         id:"298DB20MSDF-DSFD-SFDS-FDS-ZCU",
-        client:"VDL Tratamento Termico",
-        model:"MHDX 1016",
+        client:"VDL Administrativo",
+        model:"HDCV 1032",
         user:"admin",
         password:"601304",
-        cams_installed:"7",
-        ip:"192.168.4.00",
-        service_port:"37777",
-        http_port:"80",
-        recording_days:"00",
-        hd:"0TB",
-        cloud:"0",
+        cams_installed:"13",
+        ip:"192.168.4.230",
+        service_port:"37771",
+        http_port:"8081",
+        recording_days:"21",
+        hd:"3TB",
+        cloud:"1G025BDPAF00139",
         ddns:"nao se aplica",
         nickClient:"VDL",
     },
@@ -254,13 +263,134 @@ export const DVRs = [
         user:"admin",
         password:"601304",
         cams_installed:"7",
-        ip:"192.168.4.00",
-        service_port:"37777",
-        http_port:"80",
-        recording_days:"00",
-        hd:"0TB",
-        cloud:"0",
+        ip:"192.168.4.234",
+        service_port:"37772",
+        http_port:"8092",
+        recording_days:"28",
+        hd:"2TB",
+        cloud:"KS7G10004972I",
         ddns:"nao se aplica",
         nickClient:"VDL",
     },
+
+    // JEQUERI MATRIZ
+
+    {
+        id:"j928n0d2jn290kdn92j029h",
+        client:"Jequeri Matriz 01",
+        model:"VD 3116",
+        user:"admin",
+        password:"0745",
+        cams_installed:"15",
+        ip:"192.168.1.130",
+        service_port:"37774",
+        http_port:"8081",
+        recording_days:"15",
+        hd:"0TB",
+        cloud:"nao se aplica",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    },
+    {
+        id:"j928n0d2jn290kdn9MX92FNO2-",
+        client:"Jequeri Matriz 02",
+        model:"MHDX 1016",
+        user:"admin",
+        password:"0745",
+        cams_installed:"16",
+        ip:"192.168.1.7",
+        service_port:"37777",
+        http_port:"80",
+        recording_days:"13",
+        hd:"2TB",
+        cloud:"S4LF23024667E",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    },
+    {
+        id:"j928n0d2jn2XLKJZBC02J2-",
+        client:"Jequeri Matriz 03",
+        model:"VD 3116",
+        user:"admin",
+        password:"0745",
+        cams_installed:"9",
+        ip:"192.168.1.144",
+        service_port:"37777",
+        http_port:"8087",
+        recording_days:"78",
+        hd:"1TB",
+        cloud:"nao se aplica",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    },
+    {
+        id:"j928n0dBSX-SIAN-2JF3",
+        client:"Jequeri Matriz 04",
+        model:"MHDX 1016",
+        user:"admin",
+        password:"0745",
+        cams_installed:"12",
+        ip:"192.168.1.12",
+        service_port:"6032",
+        http_port:"8080",
+        recording_days:"15",
+        hd:"2TB",
+        cloud:"KS7P2703820WK",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    },
+
+    // JEQUERI OURO PRETO
+
+    {
+        id:"j928nMKX1-DM27JF3",
+        client:"Jequeri Ouro Preto 01",
+        model:"MHDX 1216",
+        user:"admin",
+        password:"ctts0745",
+        cams_installed:"12",
+        ip:"192.168.4.133",
+        service_port:"37777",
+        http_port:"80",
+        recording_days:"19",
+        hd:"1TB",
+        cloud:"5DHL2600235IE",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    }, {
+        id:"XSQj90XN293B2N-DK2N",
+        client:"Jequeri Ouro Preto 02",
+        model:"HDCVI 1016 2gen",
+        user:"admin",
+        password:"0745",
+        cams_installed:"14",
+        ip:"192.168.4.132",
+        service_port:"37788",
+        http_port:"8088",
+        recording_days:"7",
+        hd:"1TB",
+        cloud:"ORYE16151945E",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    },
+
+    // ESCOLA JAYME MARTINS DE SOUZA
+
+     {
+        id:"j928n0dBSX-SIAN-2JF3",
+        client:"Jayme Martins de Souza",
+        model:"Yeshi",
+        user:"admin",
+        password:"sem senha",
+        cams_installed:"16",
+        ip:"0",
+        service_port:"0",
+        http_port:"0",
+        recording_days:"15",
+        hd:"2TB",
+        cloud:"Não se aplica",
+        ddns:"Sem informação",
+        nickClient:"Jayme",
+    },
+
 ]

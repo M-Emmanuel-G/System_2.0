@@ -16,10 +16,10 @@ export default function Login() {
     const login = (ev:any)=>{
         try {
             ev.preventDefault()
-            if(!register) return setError("Digite sua matrícula.")
-            const getUser = codRegData.filter((user:any)=>{ return user.cod === register})
+            if(!register) return setError("Digite sua chave de acesso!.")
+            const getUser = codRegData.filter((user:any)=>{ return user.keyAccess === register})
             
-            if(getUser.length === 0 ) return setError("Matricula invalida!")
+            if(getUser.length === 0 ) return setError("Chave de acesso invalida!")
 
                 
             alert(`Bem vindo, ${getUser[0].name}`);
@@ -36,17 +36,16 @@ export default function Login() {
             <Header/>
             <section className="w-full h-[90%] flex items-center justify-center flex-col">
               <form className="flex flex-col">
-                <h2></h2>
+                <h2 className="text-white text-center text-xl">Digite a chave de acesso.</h2>
                 <Input
                     value={register}
                     onChange={(ev)=>{setRegister(ev.target.value)}}
-                    placeholder="Matrícula"
+                    placeholder="Chave de acesso..."
                     />
                     <span className=" h-10 text-red-600 text-center">{error}</span>
                     <Button
                         onClick={login}
-                        className="bg-orange-500 hover:bg-orange-500">Confirmar
-                    </Button>
+                        className="my-2 text-xl bg-orange-500 hover:bg-orange-500">Confirmar</Button>
               </form>
             </section>
         </main>

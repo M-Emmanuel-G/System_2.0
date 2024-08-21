@@ -18,10 +18,10 @@ export default async function Home() {
           sizes="100vw"
           className="w-96 h-40"
         />
-        <CardService
+        {/* <CardService
           path="/SendOS"
           service="Enviar OS"
-        />
+        /> */}
         <CardService
           path="/Login"
           service="Clientes"
