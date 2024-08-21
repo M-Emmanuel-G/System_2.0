@@ -19,10 +19,10 @@ import UpdateDVR from "./EditInfos";
 export default function ShowDVR(dvr:DvrsProps) {
     return (
         <AlertDialog>
-            <AlertDialogTrigger className="w-80 text-black text-xl bg-orange-500 rounded-xl p-4 flex my-2 items-center justify-between">{dvr.client} <ChevronRight/> </AlertDialogTrigger>
+            <AlertDialogTrigger className="w-80 text-black text-xl bg-sky-600 rounded-xl p-4 flex my-2 items-center justify-between">{dvr.client} <ChevronRight/> </AlertDialogTrigger>
             <AlertDialogContent className="bg-black border-0 overflow-y-auto">
                 <AlertDialogHeader>
-                <AlertDialogTitle className="text-amber-300">{dvr.client}</AlertDialogTitle>
+                <AlertDialogTitle className="text-sky-600">{dvr.client}</AlertDialogTitle>
                 <AlertDialogDescription>
                 <section className="w-full h-[500px] overflow-y-auto justify-center items-center text-white">
                 <div className="py-2 flex justify-between">
@@ -43,7 +43,7 @@ export default function ShowDVR(dvr:DvrsProps) {
                 </div>
                 
                 <div className="my-4">
-                    <h2 className="text-xl text-amber-300">Redes</h2>
+                    <h2 className="text-xl text-sky-600">Redes</h2>
                 </div>
                 
                 <div className="py-2 flex justify-between">
@@ -68,7 +68,7 @@ export default function ShowDVR(dvr:DvrsProps) {
                 </div>
 
                 <div className="my-4">
-                    <h2 className="text-xl text-amber-300">Armazenamento</h2>
+                    <h2 className="text-xl text-sky-600">Armazenamento</h2>
                 </div>
 
                 <div className="py-2 flex justify-between">

@@ -45,7 +45,7 @@ export default function Login() {
                     <span className=" h-10 text-red-600 text-center">{error}</span>
                     <Button
                         onClick={login}
-                        className="my-2 text-xl bg-orange-500 hover:bg-orange-500">Confirmar</Button>
+                        className="my-2 text-xl bg-sky-600 hover:bg-sky-600">Confirmar</Button>
               </form>
             </section>
         </main>

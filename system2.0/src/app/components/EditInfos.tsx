@@ -65,14 +65,14 @@ export default function UpdateDVR(dvr:DvrsProps) {
 
     return (
         <AlertDialog>
-            <AlertDialogTrigger className="w-36 h-[42px] text-black bg-orange-500 rounded-xl">Gerar PDF</AlertDialogTrigger>
+            <AlertDialogTrigger className="w-36 h-[42px] text-black bg-sky-600 rounded-xl">Gerar PDF</AlertDialogTrigger>
             <AlertDialogContent className="bg-black border-0 overflow-y-auto">
                 <AlertDialogHeader>
                 <AlertDialogTitle className="text-orange-500 text-2xl text-center mb-8">{dvr.client}</AlertDialogTitle>
                 <AlertDialogDescription>
                 <section className="w-full h-[500px] overflow-y-auto justify-center items-center text-white">
                     <form className=" w-full flex flex-col items-center">
-                    <h2 className="text-xl text-orange-500 text-start">Informações básicas</h2>
+                    <h2 className="text-xl text-sky-600 text-start">Informações básicas</h2>
                         <Input
                             onChange={(ev)=>{setModel(ev.target.value)}}
                             value={model}
@@ -93,7 +93,7 @@ export default function UpdateDVR(dvr:DvrsProps) {
                             value={qtdCam}
                             placeholder="Cameras instaladas"
                         />
-                        <h2 className="text-xl text-orange-500 text-start">Rede:</h2>
+                        <h2 className="text-xl text-sky-600 text-start">Rede:</h2>
                         <Input
                             onChange={(ev)=>{setIp(ev.target.value)}}
                             value={ip}
@@ -119,7 +119,7 @@ export default function UpdateDVR(dvr:DvrsProps) {
                             value={ddns}
                             placeholder="DDNS"
                         />
-                        <h2 className="text-xl text-orange-500 text-start">Armazenamento:</h2>
+                        <h2 className="text-xl text-sky-600 text-start">Armazenamento:</h2>
                         <Input
                             onChange={(ev)=>{setHd(ev.target.value)}}
                             value={hd}
