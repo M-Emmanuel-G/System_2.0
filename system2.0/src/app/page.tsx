@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import CardService from "./components/CardService"
 import Image from "next/image"
 import Icon from "./assets/ctts-icon.png"
+import Loading from "./components/Loading"
 
 export default async function Home() {
 

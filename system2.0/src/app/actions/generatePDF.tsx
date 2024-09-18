@@ -33,7 +33,7 @@ const GeneratePDF = (dvr:DvrsProps) => {
          Porta  HTTP: ${dvr.http_port}
          Ddns: ${dvr.ddns} 
          Tamanho do HD/Armazenamento: ${dvr.hd}
-         Tempo de Gravação: ${dvr.recording_days} dias
+         Tempo de Gravação: ${dvr.recording_days}
      
                          Preventivas realizadas:
      

@@ -13,13 +13,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
+model User {
   id    String     @id @default(cuid()) 
   email String  @unique
-  name  String?
+  name  String
+  register Int
 }
 
-model dvr{
+model Dvr{
   id String @id @default(cuid())
   name_Client String @default("name_Client")
   model String @default("modelo")
@@ -33,4 +34,24 @@ model dvr{
   ddns String @default("ddns")
   hd String @default("Tamanho HD")
   recording_days String @default("Dias de gravacao")
+
+  preventive Preventive[]
+}
+
+model Clients{
+  id String @id @default(cuid())
+  client String
+  preventive Preventive[]
+}
+
+model Preventive {
+  id String @id @default(cuid())
+  date String
+
+  clientID String
+  clients Clients @relation(fields: [clientID], references: [id])
+
+  dvrID String
+  dvr Dvr @relation(fields: [dvrID], references: [id])
+
 }

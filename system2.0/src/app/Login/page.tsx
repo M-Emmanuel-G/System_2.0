@@ -6,6 +6,7 @@ import Input from "../components/Input";
 import { codRegData } from "../Data/register";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
+import Loading from "../components/Loading";
 
 export default function Login() {
 
@@ -16,12 +17,15 @@ export default function Login() {
     const login = (ev:any)=>{
         try {
             ev.preventDefault()
+
+            const loading = document.getElementById("Loading") as HTMLElement
+
             if(!register) return setError("Digite sua chave de acesso!.")
             const getUser = codRegData.filter((user:any)=>{ return user.keyAccess === register})
             
             if(getUser.length === 0 ) return setError("Chave de acesso invalida!")
 
-                
+            loading.style.display = "flex"
             alert(`Bem vindo, ${getUser[0].name}`);
             router.push("/Clients")
 
@@ -48,6 +52,7 @@ export default function Login() {
                         className="my-2 text-xl bg-sky-600 hover:bg-sky-600">Confirmar</Button>
               </form>
             </section>
+            <Loading/>
         </main>
     );
 }

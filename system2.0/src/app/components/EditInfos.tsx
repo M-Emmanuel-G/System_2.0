@@ -65,7 +65,7 @@ export default function UpdateDVR(dvr:DvrsProps) {
 
     return (
         <AlertDialog>
-            <AlertDialogTrigger className="w-36 h-[42px] text-black bg-sky-600 rounded-xl">Gerar PDF</AlertDialogTrigger>
+            <AlertDialogTrigger className="w-[400px] h-[42px] text-black bg-sky-600 rounded-xl my-4">Gerar PDF</AlertDialogTrigger>
             <AlertDialogContent className="bg-black border-0 overflow-y-auto">
                 <AlertDialogHeader>
                 <AlertDialogTitle className="text-orange-500 text-2xl text-center mb-8">{dvr.client}</AlertDialogTitle>
