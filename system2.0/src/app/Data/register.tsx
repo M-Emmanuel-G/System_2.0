@@ -15,6 +15,8 @@ export interface DvrsProps{
     hd :string 
     recording_days :string
     nickClient: string
+    obs?:string,
+    clientID?:string
 }
 
 export const codRegData = [
@@ -357,8 +359,9 @@ export const DVRs = [
         cloud:"5DHL2600235IE",
         ddns:"Sem informação",
         nickClient:"Jequeri",
-    }, {
-        id:"XSQj90XN293B2N-DK2N",
+    },
+    {
+        id:"DBSC92N00DN92NJ2B2-SD",
         client:"Jequeri Ouro Preto 02",
         model:"HDCVI 1016 2gen",
         user:"admin",
@@ -374,9 +377,44 @@ export const DVRs = [
         nickClient:"Jequeri",
     },
 
+    //  JEQUERI SAO JOSE
+
+    {
+        id:"XSD91BS10BS8J2F2-G7",
+        client:"Jequeri São José 01",
+        model:"HDCVI 1016 2gen",
+        user:"admin",
+        password:"0745",
+        cams_installed:"16",
+        ip:"192.168.2.175",
+        service_port:"37777",
+        http_port:"8088",
+        recording_days:"15",
+        hd:"2TB",
+        cloud:"ORYE16134531O",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    },
+    {
+        id:"XSQj90XJX8B2INOJ0WDJSNJ01JN2FR2",
+        client:"Jequeri São José 02",
+        model:"iMHDX 3008",
+        user:"admin",
+        password:"ctts0745",
+        cams_installed:"7",
+        ip:"192.168.2.150",
+        service_port:"37777",
+        http_port:"80",
+        recording_days:"28",
+        hd:"2TB",
+        cloud:"JNFL0603280GT",
+        ddns:"Sem informação",
+        nickClient:"Jequeri",
+    },
+
     // ESCOLA JAYME MARTINS DE SOUZA
 
-     {
+    {
         id:"j928n0dBSX-SIAN-2JF3",
         client:"Jayme Martins de Souza",
         model:"Yeshi",

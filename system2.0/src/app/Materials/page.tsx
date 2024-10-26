@@ -75,10 +75,10 @@ export default function Materials() {
     }
 
     return (
-        <main className="w-screen h-screen flex flex-col bg-black">
+        <main className="w-screen h-screen flex flex-col">
             <Header/>
-            <section className="w-full h-[90%] flex items-center justify-center text-white flex-col text-2xl overflow-y-auto">
-                <h2 className="my-8" >Materiais utilizados</h2>
+            <section className="w-full h-[90%] flex items-center text-white flex-col text-2xl overflow-y-auto">
+                <h2 className="my-4 text-black" >Materiais utilizados</h2>
                 <form className="flex flex-col" onSubmit={createPdf}>
                     <Input
                         onChange={(ev)=>{setClient(ev.target.value)}}
@@ -86,14 +86,14 @@ export default function Materials() {
                         placeholder="Nome do cliente"
                     />
                 <textarea
-                    className="text-black outline-none text-sm"   
+                    className="text-black outline-none text-sm text-center border-2 border-black rounded-xl"   
                     cols={18}
-                    rows={20}
+                    rows={15}
                     value={materials}
                     onChange={(ev)=>{setMaterials(ev.target.value)}}
                     placeholder="Lista de materiais!"
                 />
-                    <Button className="w-80 h-12 my-4 bg-amber-400 text-xl hover:bg-amber-400">Gerar Lista</Button>
+                    <Button className="w-80 h-12 my-4 bg-black text-xl hover:bg-black">Gerar</Button>
                 </form>
             </section>
         </main>

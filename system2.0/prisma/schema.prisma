@@ -13,16 +13,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model AccountUser {
   id    String     @id @default(cuid()) 
   email String  @unique
   name  String
-  register Int
+  password String
+  dvrID String
+}
+
+model Clients{
+  id String @id @default(cuid())
+  client String
+  date String
+  dvr Dvr[]
+
 }
 
 model Dvr{
   id String @id @default(cuid())
-  name_Client String @default("name_Client")
+  name_Client String @default("Nome do cliente")
+  description String @default("Descricao/Localizacao DVR")
   model String @default("modelo")
   cams_installed String @default("cameras instaladas")
   user String @default("usuario")
@@ -35,23 +45,21 @@ model Dvr{
   hd String @default("Tamanho HD")
   recording_days String @default("Dias de gravacao")
 
-  preventive Preventive[]
-}
-
-model Clients{
-  id String @id @default(cuid())
-  client String
-  preventive Preventive[]
-}
-
-model Preventive {
-  id String @id @default(cuid())
-  date String
-
   clientID String
   clients Clients @relation(fields: [clientID], references: [id])
+}
 
-  dvrID String
-  dvr Dvr @relation(fields: [dvrID], references: [id])
+model Solicities{
+  id String @id @default(cuid())
+  client String
+  cod_solicity Int @default(autoincrement())
+  solicity_type String @default("Orçamento")
+  solicity String
+  description String
+}
 
+model Materials{
+  id String @id @default(cuid())
+  client String
+  description String
 }

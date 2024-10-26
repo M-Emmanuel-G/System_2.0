@@ -8,9 +8,11 @@ import { LogoBase64 } from "../assets/ImageBase64";
 
 const GeneratePDF = (dvr:DvrsProps) => {
 
+
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
 
+    
 
         const getInfos = `
      
@@ -20,20 +22,20 @@ const GeneratePDF = (dvr:DvrsProps) => {
      
      
      
-        Segue abaixo o envio da O.S., referente a manutenção preventiva, de Posto Shell!
+        Segue abaixo o envio da O.S., referente a manutenção preventiva/corretiva.
      
-         Data de envio:  ${GetDate()}
-         Nome do Cliente: ${dvr.client}
-         Modelo/Marca do gravador: ${dvr.model}
-         Usuario: ${dvr.user} 
-         Senha: ${dvr.password}
-         Total de cameras instaladas: ${dvr.cams_installed}
-         IP: ${dvr.ip}
-         Porta de Serviço: ${dvr.service_port}
-         Porta  HTTP: ${dvr.http_port}
-         Ddns: ${dvr.ddns} 
-         Tamanho do HD/Armazenamento: ${dvr.hd}
-         Tempo de Gravação: ${dvr.recording_days}
+         Data de envio:  ${GetDate()},
+         Nome do Cliente: ${dvr.client},
+         Modelo/Marca do gravador: ${dvr.model},
+         Usuario: ${dvr.user}, 
+         Senha: ${dvr.password},
+         Total de cameras instaladas: ${dvr.cams_installed},
+         IP: ${dvr.ip},
+         Porta de Serviço: ${dvr.service_port},
+         Porta  HTTP: ${dvr.http_port},
+         Ddns: ${dvr.ddns},
+         Tamanho do HD/Armazenamento: ${dvr.hd},
+         Tempo de Gravação: ${dvr.recording_days} dias
      
                          Preventivas realizadas:
      
@@ -50,8 +52,9 @@ const GeneratePDF = (dvr:DvrsProps) => {
          conferir se nobreak esta sustentando o sistema sem rede AC
          conferir estado físico das instalações / infra-estrutura
      
-     
-     
+                            Observações
+
+          ${dvr.obs}
      
      
      Obrigado por conta com os serviços da CTTS...

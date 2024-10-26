@@ -7,6 +7,7 @@ import { codRegData } from "../Data/register";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Loading from "../components/Loading";
+import { setTimeout } from "timers";
 
 export default function Login() {
 
@@ -19,9 +20,15 @@ export default function Login() {
             ev.preventDefault()
 
             const loading = document.getElementById("Loading") as HTMLElement
+            const getUser = codRegData.filter((user:any)=>{ return user.keyAccess === register})
+
+            if(!register || getUser.length === 0){
+                setTimeout(() => {
+                    setError("")
+                }, 5000);
+            }
 
             if(!register) return setError("Digite sua chave de acesso!.")
-            const getUser = codRegData.filter((user:any)=>{ return user.keyAccess === register})
             
             if(getUser.length === 0 ) return setError("Chave de acesso invalida!")
 
@@ -36,11 +43,11 @@ export default function Login() {
     }
 
     return (
-        <main className="w-screen h-screen flex bg-black items-center justify-center flex-col">
+        <main className="w-screen h-screen flex items-center justify-center flex-col">
             <Header/>
             <section className="w-full h-[90%] flex items-center justify-center flex-col">
               <form className="flex flex-col">
-                <h2 className="text-white text-center text-xl">Digite a chave de acesso.</h2>
+                <h2 className=" text-center text-xl">Digite sua chave de acesso.</h2>
                 <Input
                     value={register}
                     onChange={(ev)=>{setRegister(ev.target.value)}}
@@ -48,6 +55,7 @@ export default function Login() {
                     />
                     <span className=" h-10 text-red-600 text-center">{error}</span>
                     <Button
+                        autoFocus
                         onClick={login}
                         className="my-2 text-xl bg-sky-600 hover:bg-sky-600">Confirmar</Button>
               </form>

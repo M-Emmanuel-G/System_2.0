@@ -10,16 +10,18 @@ import { Button } from "@/components/ui/button";
 
 const SolicityService = () => {
 
-    const [materials, setMaterials] = useState<string>("")
+    const [materials, setMaterials] = useState<string>("Cameras")
     const [client, setClient] = useState<string>("")
+    const [solicity, setSolicity] = useState<string>("Orçamento")
+    const [description, setDescription] = useState<string>("")
 
     function createPdf(ev:React.FormEvent) {
         try {
           ev.preventDefault()
 
           if(!client) return alert("Cliente não informado!")
-          if(client.length < 3) return alert("Cliente é necessario ter pelo menos 3 caracteres! ")
-          if(!materials) return alert("Solicitação não informado!")
+          if(client.length < 3) return alert("No campo cliente, é necessário ter pelo menos 3 caractéres!")
+          if(!materials) return alert("Solicitação não informada!")
 
         const getInfos = `
 
@@ -74,8 +76,8 @@ const SolicityService = () => {
         }
     }
 
-    return ( 
-        <main className="w-screen h-screen flex flex-col items-center justify-center bg-black">
+    return (  
+        <main className="w-screen h-screen flex flex-col items-center justify-center">
             <Header/>
             <section className="w-full h-[90%] flex items-center justify-center">
                 <form className="flex flex-col" onSubmit={createPdf}>
@@ -84,15 +86,35 @@ const SolicityService = () => {
                         value={client}
                         placeholder="Nome do cliente"
                     />
-                <textarea
-                    className="text-black outline-none text-sm"   
-                    cols={18}
-                    rows={20}
-                    value={materials}
-                    onChange={(ev)=>{setMaterials(ev.target.value)}}
-                    placeholder="Solicitação!"
-                />
-                    <Button className="w-80 h-12 my-4 bg-amber-400 text-xl hover:bg-amber-400">Gerar Solicitação</Button>
+                    <select
+                      className="w-80 h-10 text-center bg-transparent"
+                      onChange={(ev)=>{setSolicity(ev.target.value)}}
+                      value={solicity}
+                    >
+                      <option>Orçamento</option>
+                      <option>Manutenção</option>
+                    </select>
+                    <select
+                      className="w-80 h-10 text-center bg-transparent"
+                      onChange={(ev)=>{setMaterials(ev.target.value)}}
+                      value={materials}
+                    >
+                      <option>Cameras</option>
+                      <option>Alarme</option>
+                      <option>Portao Eletronico</option>
+                      <option>Rede</option>
+                      <option>Sonorização</option>
+                    </select>
+                    <textarea
+                      className="text-black outline-none text-sm text-center border-2 border-black rounded-xl"   
+                      cols={18}
+                      rows={15}
+                      value={description}
+                      onChange={(ev)=>{setDescription(ev.target.value)}}
+                      placeholder="Descrição!"
+                  />
+                    
+                    <Button className="w-80 h-12 my-4 bg-black text-xl hover:bg-black">Gerar Solicitação</Button>
                 </form>
             </section>
         </main>

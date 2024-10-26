@@ -1,40 +1,24 @@
-import React, { useState } from "react"
-import CardService from "./components/CardService"
+import React from "react"
+import Header from "./components/Header"
+import { db } from "@/lib/prisma"
+import CardInfo from "./components/CardInfo"
 import Image from "next/image"
-import Icon from "./assets/ctts-icon.png"
-import Loading from "./components/Loading"
 
 export default async function Home() {
 
+  const infoClients = await db.clients.findMany({
+    include:{
+      dvr:true
+    }
+  })
+
+  const messageClients = `${infoClients.length} clients cadastrados.`
 
  return (
-    <main className="w-screen h-screen  flex min-h-screen flex-col items-center justify-between bg-black">
-      <section className="w-full h-[90%] flex justify-center items-center flex-col" >
-        <Image 
-          src={Icon} 
-          alt=""
-          width={0}
-          height={0}
-          quality={100}
-          sizes="100vw"
-          className="w-96 h-40"
-        />
-        {/* <CardService
-          path="/SendOS"
-          service="Enviar OS"
-        /> */}
-        <CardService
-          path="/Login"
-          service="Clientes"
-        />
-        <CardService
-          path="/Materials"
-          service="Materiais Utilizados"
-        />
-        <CardService
-          path="/SolicityServices"
-          service="Solicitação de serviços"
-        />
+    <main className="w-screen h-screen  flex min-h-screen flex-col items-center justify-between">
+      <Header/>
+      <section className="w-full h-[90%] flex  items-center flex-col" >
+        
       </section>
     </main>
   )

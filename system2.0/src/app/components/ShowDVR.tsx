@@ -2,7 +2,6 @@
 
 import {
     AlertDialog,
-    AlertDialogAction,
     AlertDialogCancel,
     AlertDialogContent,
     AlertDialogDescription,
@@ -17,9 +16,11 @@ import UpdateDVR from "./EditInfos";
 
 
 export default function ShowDVR(dvr:DvrsProps) {
+
     return (
-        <AlertDialog>
-            <AlertDialogTrigger className="w-80 text-black text-xl bg-sky-600 rounded-xl p-4 flex my-2 items-center justify-between">{dvr.client} <ChevronRight/> </AlertDialogTrigger>
+      <>
+          <AlertDialog>
+            <AlertDialogTrigger className="w-80 text-black text-xl  rounded-xl p-4 flex my-2 items-center justify-between">{dvr.client} <ChevronRight/> </AlertDialogTrigger>
             <AlertDialogContent className="bg-black border-0 overflow-y-auto">
                 <AlertDialogHeader>
                 <AlertDialogTitle className="text-sky-600">{dvr.client}</AlertDialogTitle>
@@ -104,6 +105,7 @@ export default function ShowDVR(dvr:DvrsProps) {
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
+      </>
 
     );
 }

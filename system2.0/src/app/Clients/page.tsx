@@ -1,38 +1,39 @@
-import { DVRs, DvrsProps } from "../Data/register";
+import { db } from "@/lib/prisma";
 import Header from "../components/Header";
-import ShowDVR from "../components/ShowDVR";
+import { Clients } from "@prisma/client";
+import ClientsItem from "../components/ClientsItem";
+import SaveDvrs from "../components/AddDvr";
+import SaveClient from "../components/AddClient";
+import Loading from "../components/Loading";
 
-export default async function Clients() {
 
-    const getClients = DVRs.map((client:DvrsProps, key:number)=>{
+const Clients = async () => {
+
+    const getClients = await db.clients.findMany()
+
+    const showClients = getClients.map((client:Clients, key:number)=>{
         return(
-            <ShowDVR
-                cams_installed={client.cams_installed}
-                client={client.client}
-                cloud={client.cloud}
-                ddns={client.ddns}
-                hd={client.hd}
-                http_port={client.http_port}
-                ip={client.ip}
-                model={client.model}
-                nickClient={client.nickClient}
-                password={client.password}
-                recording_days={client.recording_days}
-                service_port={client.service_port}
-                user={client.user}
-                id={client.id}
-                key={client.id}
+            <ClientsItem
+                clients={client}
             />
         )
     })
-
+    
     return (
-        <main className="w-screen h-screen flex flex-col bg-black">
+        <main className="w-screen h-screen flex flex-col">
             <Header/>
-            <section className="w-full h-[90%] flex flex-col items-center overflow-y-auto">
-                <h2 className="my-8 text-white text-2xl">Clientes</h2>
-                {getClients}
+            <section className="w-full h-[10%] flex justify-evenly">
+                <SaveDvrs
+                    clients={getClients}
+                />
+                <SaveClient/>
             </section>
+            <section className="w-full h-[80%] flex items-center flex-col">
+                {showClients}
+            </section>
+            <Loading/>
         </main>
-    );
+     );
 }
+ 
+export default Clients;

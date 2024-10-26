@@ -15,32 +15,71 @@ import dayjs from 'dayjs'
 import localeData from 'dayjs/plugin/localeData'
 import { useState } from "react";
 import Input from "./Input";
-// import UpdateDvr from "../actions/UpdateDVR";
-import { DvrsProps } from "../Data/register";
-import GeneratePDF from "../actions/generatePDF";
+import SaveDvrDatabase from "../actions/addDvr";
 
-export default function UpdateDVR(dvr:DvrsProps) {
 
-    const [model, setModel] = useState<string>(dvr.model)
-    const [user, setUser] = useState<string>(dvr.user)
-    const [password, setPassword] = useState<string>(dvr.password)
-    const [qtdCam, setQtdCam] = useState<string>(dvr.cams_installed)
-    const [ip, setIp] = useState<string>(dvr.ip)
-    const [servicePort, setServicePort] = useState<string>(dvr.service_port)
-    const [httpPort, setHttpPort] = useState<string>(dvr.http_port)
-    const [hd, setHd] = useState<string>(dvr.hd)
-    const [cloud, setCloud] = useState<string>(dvr.cloud)
-    const [ddns, setDdns] = useState<string>(dvr.ddns)
-    const [recDays, setRecDays] = useState<string>(dvr.recording_days)
-    const [obs, setObs] = useState<string>("")
+interface SaveDvrProps{
+    name_Client: string
+    description: string
+    model: string
+    cams_installed: string
+    user: string
+    password: string
+    ip: string
+    cloud: string
+    service_port: string
+    http_port: string
+    ddns: string
+    hd: string
+    recording_days: string
+    clientID: string
+}
+
+interface ClientsProps{
+    id:string
+    client:string
+    date:string
+}
+
+
+
+export default function SaveDvrs(clients:any) {
+
+    const showClients = clients.clients.map((client:ClientsProps)=>{
+        return(
+            <option
+                className="w-80 h-8 text-black bg-transparent"
+                onClick={()=>{setClientID(client.id)}}
+                >
+                    {client.client}
+            </option>
+        )
+    })
+
+    
+ 
+    const [model, setModel] = useState<string>("")
+    const [description, setDescription] = useState<string>("")
+    const [user, setUser] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [qtdCam, setQtdCam] = useState<string>("")
+    const [ip, setIp] = useState<string>("")
+    const [servicePort, setServicePort] = useState<string>("")
+    const [httpPort, setHttpPort] = useState<string>("")
+    const [hd, setHd] = useState<string>("")
+    const [cloud, setCloud] = useState<string>("")
+    const [ddns, setDdns] = useState<string>("")
+    const [recDays, setRecDays] = useState<string>("")
+    const [clientID, setClientID] = useState<string>("")
 
     dayjs.locale('pt-br');
     dayjs.extend(localeData);
 
-    const saveUpdate = async ()=>{
+    const saveDvr = async ()=>{
 
-        const body:DvrsProps = {
-            id:dvr.id,
+        const loading = document.getElementById("Loading") as HTMLElement
+        
+        const body:SaveDvrProps = {
             model,
             user,
             password,
@@ -52,27 +91,39 @@ export default function UpdateDVR(dvr:DvrsProps) {
             cloud,
             ddns,
             recording_days: recDays,
-            client: dvr.client,
-            nickClient: dvr.nickClient,
-            obs
+            description,
+            clientID,
+            name_Client:""
         }
         
-        GeneratePDF(body)
+        loading.style.display = "flex"
 
-       alert("PDF gerado com sucesso!")
+        const response = await SaveDvrDatabase(body)
+        alert(response)
+
+        loading.style.display = "none"
 
     }
 
     return (
         <AlertDialog>
-            <AlertDialogTrigger className="w-80 h-10 text-white bg-slate-900 rounded-xl my-4">Gerar PDF</AlertDialogTrigger>
-            <AlertDialogContent className="bg-black border-0 overflow-y-auto">
+            <AlertDialogTrigger className=" my-4">Cadastrar DVR</AlertDialogTrigger>
+            <AlertDialogContent className="bg-black-1/2 border-0 overflow-y-auto">
                 <AlertDialogHeader>
-                <AlertDialogTitle className="text-orange-500 text-2xl text-center mb-8">{dvr.client}</AlertDialogTitle>
+                <AlertDialogTitle className="text-orange-500 text-2xl text-center mb-8">Cadastrar DVR</AlertDialogTitle>
                 <AlertDialogDescription>
                 <section className="w-full h-[500px] overflow-y-auto justify-center items-center text-white">
                     <form className=" w-full flex flex-col items-center text-center">
                     <h2 className="text-xl text-sky-600 text-start my-4">Informações básicas</h2>
+                        <div className="flex flex-col">
+                            <strong>Cliente</strong>
+                            <select
+                                className="w-80 h-8 my-4 text-center text-black"
+                            >
+                                <option value="client">Escolha um Cliente!</option>
+                                {showClients}
+                            </select>
+                        </div>  
                         <div className="flex flex-col">
                             <strong>Modelo DVR</strong>
                             <Input
@@ -164,19 +215,17 @@ export default function UpdateDVR(dvr:DvrsProps) {
                             />
                         </div>                        
                         <div className="flex flex-col">
-                            <strong>Observações</strong>
-                            <textarea
-                                className="rounded-xl text-black"
-                                cols={35}
-                                rows={10}
-                                value={obs}
-                                onChange={(ev)=>{setObs(ev.target.value)}}
+                            <strong>Descrição</strong>
+                            <Input
+                                onChange={(ev)=>{setDescription(ev.target.value)}}
+                                value={description}
+                                placeholder="ex: CTTS Bela Vista"
                             />
-                        </div>    
-                        <div>
-                        <AlertDialogFooter className="my-4">
-                            <AlertDialogCancel className="bg-red-400 border-0 hover:bg-red-500 hover:text-white" >Cancelar</AlertDialogCancel>
-                            <AlertDialogAction className="bg-emerald-400 hover:bg-emerald-500" onClick={saveUpdate}>Salvar</AlertDialogAction>
+                        </div>                          
+                        <div className="w-full flex justify-center">
+                        <AlertDialogFooter className="my-4 w-full flex flex-row items-center justify-center">
+                            <AlertDialogCancel className="bg-red-400 border-0 hover:bg-red-500 hover:text-white my-2 mx-4" >Cancelar</AlertDialogCancel>
+                            <AlertDialogAction className="bg-emerald-400 hover:bg-emerald-500" onClick={saveDvr}>Salvar</AlertDialogAction>
                         </AlertDialogFooter>
                         </div>                    
                     </form>

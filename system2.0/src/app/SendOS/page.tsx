@@ -29,7 +29,7 @@ interface SendOsProps{
 export default function SendOS() {
 
 const teste = () => {
-
+  alert("Serviço em manutenção!")
 }
  
 
